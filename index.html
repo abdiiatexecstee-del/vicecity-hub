@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +9,7 @@
     <meta name="description" content="VICECITY HUB is an unofficial GTA VI fan hub featuring news, guides, vehicles, characters, missions, locations and interactive tools.">
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -87,20 +87,46 @@
             overflow: hidden;
 
             background:
-                radial-gradient(circle at 50% 15%, rgba(255,79,163,.28), transparent 30%),
-                radial-gradient(circle at 20% 80%, rgba(90,70,255,.16), transparent 30%),
-                linear-gradient(180deg, #180c18 0%, #09090d 55%, #07080a 100%);
+                radial-gradient(
+                    circle at 50% 15%,
+                    rgba(255,79,163,.28),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 20% 80%,
+                    rgba(90,70,255,.16),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    180deg,
+                    #180c18 0%,
+                    #09090d 55%,
+                    #07080a 100%
+                );
         }
 
         .hero::before {
             content: "";
             position: absolute;
             inset: 0;
+
             background:
-                linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+                linear-gradient(
+                    rgba(255,255,255,.025) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.025) 1px,
+                    transparent 1px
+                );
+
             background-size: 50px 50px;
-            mask-image: linear-gradient(to bottom, black, transparent);
+            mask-image: linear-gradient(
+                to bottom,
+                black,
+                transparent
+            );
         }
 
         .hero-content {
@@ -149,6 +175,8 @@
             color: #fff;
         }
 
+        /* COUNTDOWN */
+
         .countdown {
             display: flex;
             justify-content: center;
@@ -176,6 +204,8 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+
+        /* BUTTONS */
 
         .buttons {
             display: flex;
@@ -320,6 +350,10 @@
             outline: none;
         }
 
+        .search-box input:focus {
+            border-color: #ff4fa3;
+        }
+
         .search-box button {
             padding: 15px 22px;
             border: none;
@@ -329,7 +363,7 @@
             cursor: pointer;
         }
 
-        /* AD PLACEHOLDER */
+        /* AD */
 
         .ad-space {
             max-width: 1250px;
@@ -347,6 +381,12 @@
             color: #555862;
             font-size: 11px;
             letter-spacing: 1px;
+        }
+
+        /* DATABASE */
+
+        .database-section {
+            scroll-margin-top: 80px;
         }
 
         /* ABOUT */
@@ -398,15 +438,19 @@
             .count-box {
                 min-width: 70px;
             }
+
         }
+
     </style>
 </head>
 
 <body>
 
+
 <!-- NAVIGATION -->
 
 <nav>
+
     <div class="nav-container">
 
         <a href="#" class="logo">
@@ -414,13 +458,16 @@
         </a>
 
         <div class="nav-links">
+
             <a href="#news">News</a>
             <a href="#explore">Explore</a>
             <a href="#guides">Guides</a>
             <a href="#about">About</a>
+
         </div>
 
     </div>
+
 </nav>
 
 
@@ -492,9 +539,11 @@
 <!-- AD SPACE -->
 
 <div class="ad-space">
+
     <div class="ad-box">
         ADVERTISEMENT
     </div>
+
 </div>
 
 
@@ -503,8 +552,13 @@
 <section id="news">
 
     <div class="section-header">
+
         <h2>Latest GTA VI</h2>
-        <p>News and officially confirmed information.</p>
+
+        <p>
+            News and officially confirmed information.
+        </p>
+
     </div>
 
     <div class="news-grid">
@@ -554,10 +608,12 @@
 
     <div class="section-header">
 
-        <h2>Explore GTA VI</h2>
+        <h2>
+            Explore GTA VI
+        </h2>
 
         <p>
-            Build your ultimate GTA VI database.
+            Explore the growing VICECITY HUB database.
         </p>
 
         <div class="search-box">
@@ -579,59 +635,456 @@
 
     <div class="cards">
 
-        <a href="#" class="card">
+        <a href="#map" class="card">
             <div class="card-icon">🗺️</div>
-            <h3>Interactive Map</h3>
+
+            <h3>
+                Interactive Map
+            </h3>
+
             <p>
                 Explore Vice City and Leonida with locations,
                 collectibles, missions and more.
             </p>
         </a>
 
-        <a href="#" class="card">
+
+        <a href="#vehicles" class="card">
             <div class="card-icon">🚗</div>
-            <h3>Vehicles</h3>
+
+            <h3>
+                Vehicles
+            </h3>
+
             <p>
                 Browse GTA VI vehicles and compare
                 performance and specifications.
             </p>
         </a>
 
-        <a href="#" class="card">
+
+        <a href="#weapons" class="card">
             <div class="card-icon">🔫</div>
-            <h3>Weapons</h3>
+
+            <h3>
+                Weapons
+            </h3>
+
             <p>
                 Discover weapons, categories and
                 gameplay information.
             </p>
         </a>
 
-        <a href="#" class="card">
+
+        <a href="#characters" class="card">
             <div class="card-icon">👤</div>
-            <h3>Characters</h3>
+
+            <h3>
+                Characters
+            </h3>
+
             <p>
                 Explore characters and personalities
                 from GTA VI.
             </p>
         </a>
 
-        <a href="#" class="card">
+
+        <a href="#missions" class="card">
             <div class="card-icon">🎯</div>
-            <h3>Missions</h3>
+
+            <h3>
+                Missions
+            </h3>
+
             <p>
                 Mission information, objectives,
                 rewards and walkthroughs.
             </p>
         </a>
 
-        <a href="#" class="card">
+
+        <a href="#locations" class="card">
             <div class="card-icon">📍</div>
-            <h3>Locations</h3>
+
+            <h3>
+                Locations
+            </h3>
+
             <p>
                 Discover important locations throughout
                 Leonida.
             </p>
         </a>
+
+    </div>
+
+</section>
+
+
+<!-- INTERACTIVE MAP -->
+
+<section id="map" class="database-section">
+
+    <div class="section-header">
+
+        <h2>
+            🗺️ Interactive Map
+        </h2>
+
+        <p>
+            Explore Vice City and the wider Leonida region.
+        </p>
+
+    </div>
+
+    <div class="news-card">
+
+        <div class="news-label">
+            Coming Soon
+        </div>
+
+        <h3>
+            VICECITY HUB Interactive Map
+        </h3>
+
+        <p>
+            A searchable GTA VI map featuring locations,
+            missions, collectibles, businesses and points
+            of interest.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- VEHICLES -->
+
+<section id="vehicles" class="database-section">
+
+    <div class="section-header">
+
+        <h2>
+            🚗 Vehicles
+        </h2>
+
+        <p>
+            Browse the growing GTA VI vehicle database.
+        </p>
+
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="card-icon">
+                🚘
+            </div>
+
+            <h3>
+                Cars
+            </h3>
+
+            <p>
+                Sports cars, muscle cars, sedans and more.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🏍️
+            </div>
+
+            <h3>
+                Motorcycles
+            </h3>
+
+            <p>
+                Discover motorcycles available in GTA VI.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🚁
+            </div>
+
+            <h3>
+                Aircraft
+            </h3>
+
+            <p>
+                Helicopters, planes and other aircraft.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- WEAPONS -->
+
+<section id="weapons" class="database-section">
+
+    <div class="section-header">
+
+        <h2>
+            🔫 Weapons
+        </h2>
+
+        <p>
+            GTA VI weapons and equipment database.
+        </p>
+
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="card-icon">
+                🔫
+            </div>
+
+            <h3>
+                Firearms
+            </h3>
+
+            <p>
+                Pistols, rifles, SMGs and other firearms.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                💣
+            </div>
+
+            <h3>
+                Explosives
+            </h3>
+
+            <p>
+                Information about explosive equipment.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                ⚔️
+            </div>
+
+            <h3>
+                Melee
+            </h3>
+
+            <p>
+                Close-range weapons and equipment.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CHARACTERS -->
+
+<section id="characters" class="database-section">
+
+    <div class="section-header">
+
+        <h2>
+            👤 Characters
+        </h2>
+
+        <p>
+            Characters confirmed for GTA VI.
+        </p>
+
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="card-icon">
+                👩
+            </div>
+
+            <h3>
+                Lucia
+            </h3>
+
+            <p>
+                One of GTA VI's two central protagonists.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                👨
+            </div>
+
+            <h3>
+                Jason
+            </h3>
+
+            <p>
+                One of GTA VI's two central protagonists.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                ❓
+            </div>
+
+            <h3>
+                More Characters
+            </h3>
+
+            <p>
+                Additional characters will be added as
+                reliable information becomes available.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MISSIONS -->
+
+<section id="missions" class="database-section">
+
+    <div class="section-header">
+
+        <h2>
+            🎯 Missions
+        </h2>
+
+        <p>
+            Mission database and future walkthroughs.
+        </p>
+
+    </div>
+
+    <div class="news-card">
+
+        <div class="news-label">
+            Database
+        </div>
+
+        <h3>
+            GTA VI Mission Database
+        </h3>
+
+        <p>
+            Mission objectives, walkthroughs, rewards,
+            requirements and completion information will
+            be organized here after reliable information
+            becomes available.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- LOCATIONS -->
+
+<section id="locations" class="database-section">
+
+    <div class="section-header">
+
+        <h2>
+            📍 Locations
+        </h2>
+
+        <p>
+            Important locations across Vice City and Leonida.
+        </p>
+
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="card-icon">
+                🌴
+            </div>
+
+            <h3>
+                Vice City
+            </h3>
+
+            <p>
+                Explore the main urban setting of GTA VI.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🏝️
+            </div>
+
+            <h3>
+                Leonida
+            </h3>
+
+            <p>
+                Discover the wider state surrounding Vice City.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🏪
+            </div>
+
+            <h3>
+                Businesses & POIs
+            </h3>
+
+            <p>
+                Track businesses and points of interest.
+            </p>
+
+        </div>
 
     </div>
 
@@ -644,7 +1097,9 @@
 
     <div class="section-header">
 
-        <h2>GTA VI Guides</h2>
+        <h2>
+            GTA VI Guides
+        </h2>
 
         <p>
             Practical guides designed for players.
@@ -655,30 +1110,56 @@
     <div class="cards">
 
         <div class="card">
-            <div class="card-icon">💰</div>
-            <h3>Money Guides</h3>
+
+            <div class="card-icon">
+                💰
+            </div>
+
+            <h3>
+                Money Guides
+            </h3>
+
             <p>
                 Strategies and tips for making money
                 in GTA VI.
             </p>
+
         </div>
 
+
         <div class="card">
-            <div class="card-icon">🏆</div>
-            <h3>100% Completion</h3>
+
+            <div class="card-icon">
+                🏆
+            </div>
+
+            <h3>
+                100% Completion
+            </h3>
+
             <p>
                 Track missions, collectibles and
                 activities.
             </p>
+
         </div>
 
+
         <div class="card">
-            <div class="card-icon">⚡</div>
-            <h3>Tips & Tricks</h3>
+
+            <div class="card-icon">
+                ⚡
+            </div>
+
+            <h3>
+                Tips & Tricks
+            </h3>
+
             <p>
                 Helpful gameplay information and
                 discoveries.
             </p>
+
         </div>
 
     </div>
@@ -691,7 +1172,11 @@
 <section id="about">
 
     <div class="section-header">
-        <h2>About VICECITY HUB</h2>
+
+        <h2>
+            About VICECITY HUB
+        </h2>
+
     </div>
 
     <div class="about-box">
@@ -731,71 +1216,238 @@
 
 <script>
 
-    /* COUNTDOWN */
+    /* =========================
+       COUNTDOWN
+    ========================= */
 
-    const launchDate = new Date("November 19, 2026 00:00:00").getTime();
+    const launchDate =
+        new Date("November 19, 2026 00:00:00").getTime();
+
 
     function updateCountdown() {
 
-        const now = new Date().getTime();
-        const distance = launchDate - now;
+        const now =
+            new Date().getTime();
+
+        const distance =
+            launchDate - now;
+
 
         if (distance <= 0) {
 
             document.getElementById("days").textContent = "0";
+
             document.getElementById("hours").textContent = "0";
+
             document.getElementById("minutes").textContent = "0";
+
             document.getElementById("seconds").textContent = "0";
 
             return;
         }
 
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-            (distance % (1000 * 60 * 60 * 24)) /
-            (1000 * 60 * 60)
-        );
 
-        const minutes = Math.floor(
-            (distance % (1000 * 60 * 60)) /
-            (1000 * 60)
-        );
+        const days =
+            Math.floor(
+                distance /
+                (1000 * 60 * 60 * 24)
+            );
 
-        const seconds = Math.floor(
-            (distance % (1000 * 60)) / 1000
-        );
 
-        document.getElementById("days").textContent = days;
-        document.getElementById("hours").textContent = hours;
-        document.getElementById("minutes").textContent = minutes;
-        document.getElementById("seconds").textContent = seconds;
+        const hours =
+            Math.floor(
+                (distance %
+                    (1000 * 60 * 60 * 24)) /
+                (1000 * 60 * 60)
+            );
+
+
+        const minutes =
+            Math.floor(
+                (distance %
+                    (1000 * 60 * 60)) /
+                (1000 * 60)
+            );
+
+
+        const seconds =
+            Math.floor(
+                (distance %
+                    (1000 * 60)) /
+                1000
+            );
+
+
+        document.getElementById("days").textContent =
+            days;
+
+        document.getElementById("hours").textContent =
+            hours;
+
+        document.getElementById("minutes").textContent =
+            minutes;
+
+        document.getElementById("seconds").textContent =
+            seconds;
+
     }
+
 
     updateCountdown();
 
-    setInterval(updateCountdown, 1000);
+    setInterval(
+        updateCountdown,
+        1000
+    );
 
 
-    /* SEARCH */
+    /* =========================
+       SEARCH
+    ========================= */
 
     function searchSite() {
 
         const query =
-            document.getElementById("searchInput").value.trim();
+            document
+                .getElementById("searchInput")
+                .value
+                .trim()
+                .toLowerCase();
+
 
         if (!query) {
-            alert("Enter something to search.");
+
+            alert(
+                "Enter something to search."
+            );
+
             return;
         }
 
+
+        const searchableSections = {
+
+            "map": [
+                "map",
+                "interactive map",
+                "locations",
+                "collectibles"
+            ],
+
+            "vehicles": [
+                "vehicle",
+                "vehicles",
+                "cars",
+                "motorcycles",
+                "aircraft"
+            ],
+
+            "weapons": [
+                "weapon",
+                "weapons",
+                "firearms",
+                "explosives",
+                "melee"
+            ],
+
+            "characters": [
+                "character",
+                "characters",
+                "lucia",
+                "jason"
+            ],
+
+            "missions": [
+                "mission",
+                "missions",
+                "walkthrough",
+                "objectives"
+            ],
+
+            "locations": [
+                "location",
+                "locations",
+                "vice city",
+                "leonida",
+                "businesses"
+            ],
+
+            "guides": [
+                "guide",
+                "guides",
+                "money",
+                "completion",
+                "tips",
+                "tricks"
+            ]
+
+        };
+
+
+        for (
+            const section in searchableSections
+        ) {
+
+            const keywords =
+                searchableSections[section];
+
+
+            const match =
+                keywords.some(
+                    keyword =>
+                        keyword.includes(query) ||
+                        query.includes(keyword)
+                );
+
+
+            if (match) {
+
+                const target =
+                    document.getElementById(section);
+
+
+                if (target) {
+
+                    target.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+                    return;
+                }
+
+            }
+
+        }
+
+
         alert(
-            "VICECITY HUB search is coming soon. Searching for: " +
-            query
+            'No results found for "' +
+            query +
+            '".'
         );
+
     }
+
+
+    /* ENTER KEY SEARCH */
+
+    document
+        .getElementById("searchInput")
+        .addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Enter") {
+
+                    searchSite();
+
+                }
+
+            }
+        );
 
 </script>
 
+
 </body>
 </html>
-```
