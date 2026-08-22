@@ -1,649 +1,942 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>VICECITY HUB | GTA VI Database, News & Guides</title>
-
-<meta name="description" content="VICECITY HUB is an unofficial GTA VI fan hub featuring news, characters, vehicles, weapons, missions, locations, guides and interactive tools.">
-
-<style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #09090b;
-    color: #f5f5f7;
-    line-height: 1.6;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button,
-input {
-    font-family: inherit;
-}
-
-/* =========================
-   NAVIGATION
-========================= */
-
-nav {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(9,9,11,.92);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid #202228;
-}
-
-.nav-inner {
-    max-width: 1250px;
-    margin: auto;
-    padding: 16px 24px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 21px;
-    font-weight: 900;
-    letter-spacing: 2px;
-}
-
-.logo span {
-    color: #ff4fa3;
-}
-
-.nav-links {
-    display: flex;
-    gap: 25px;
-}
-
-.nav-links a {
-    color: #aeb0b9;
-    font-size: 13px;
-    transition: .2s;
-}
-
-.nav-links a:hover {
-    color: #ff4fa3;
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero {
-    min-height: 650px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 90px 20px;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    background-image:
-        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
-
-    background-size: 50px 50px;
-
-    mask-image: linear-gradient(
-        to bottom,
-        black,
-        transparent
-    );
-}
-
-.hero-content {
-    max-width: 950px;
-    position: relative;
-    z-index: 2;
-}
-
-.eyebrow {
-    display: inline-block;
-    border: 1px solid #454650;
-    padding: 8px 15px;
-    border-radius: 999px;
-    color: #b8bac3;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 28px;
-}
-
-.hero h1 {
-    font-size: clamp(55px, 11vw, 130px);
-    line-height: .85;
-    letter-spacing: -6px;
-    margin-bottom: 28px;
-}
-
-.hero h1 span {
-    color: #ff4fa3;
-}
-
-.hero p {
-    max-width: 700px;
-    margin: auto;
-    color: #aeb0b9;
-    font-size: 18px;
-}
-
-.release {
-    margin-top: 25px;
-    color: #9699a3;
-    font-size: 14px;
-}
-
-.release strong {
-    color: #fff;
-}
-
-/* =========================
-   COUNTDOWN
-========================= */
-
-.countdown {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin: 30px auto;
-    flex-wrap: wrap;
-}
-
-.count-box {
-    min-width: 82px;
-    padding: 14px 10px;
-    background: rgba(255,255,255,.04);
-    border: 1px solid #303139;
-    border-radius: 10px;
-}
-
-.count-box strong {
-    display: block;
-    font-size: 24px;
-}
-
-.count-box span {
-    color: #858892;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* =========================
-   BUTTONS
-========================= */
-
-.buttons {
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-    flex-wrap: wrap;
-    margin-top: 30px;
-}
-
-.button {
-    display: inline-block;
-    padding: 13px 23px;
-    border-radius: 8px;
-    border: 1px solid #35363d;
-    font-size: 14px;
-    font-weight: bold;
-    transition: .2s;
-    cursor: pointer;
-}
-
-.button:hover {
-    transform: translateY(-2px);
-}
-
-.button-primary {
-    background: #ff4fa3;
-    color: #09090b;
-    border-color: #ff4fa3;
-}
-
-/* =========================
-   GENERAL
-========================= */
-
-section {
-    max-width: 1250px;
-    margin: auto;
-    padding: 85px 24px;
-}
-
-.section-header {
-    margin-bottom: 30px;
-}
-
-.section-header h2 {
-    font-size: 36px;
-    margin-bottom: 6px;
-}
-
-.section-header p {
-    color: #858892;
-}
-
-/* =========================
-   AD
-========================= */
-
-.ad-space {
-    max-width: 1250px;
-    margin: auto;
-    padding: 20px 24px;
-}
-
-.ad-box {
-    min-height: 90px;
-    border: 1px dashed #30323a;
-    border-radius: 10px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: #555862;
-    font-size: 11px;
-    letter-spacing: 1px;
-}
-
-/* =========================
-   NEWS
-========================= */
-
-.news-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 18px;
-}
-
-.news-card {
-    background: #101116;
-    border: 1px solid #25272e;
-    border-radius: 14px;
-    padding: 28px;
-    transition: .2s;
-}
-
-.news-card:hover {
-    transform: translateY(-3px);
-    border-color: #44464f;
-}
-
-.news-label {
-    color: #ff4fa3;
-    font-size: 10px;
-    letter-spacing: 2px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-}
-
-.news-card h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.news-card p {
-    color: #8d9099;
-    font-size: 14px;
-}
-
-/* =========================
-   DATABASE CARDS
-========================= */
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 17px;
-}
-
-.card {
-    background: #101116;
-    border: 1px solid #25272e;
-    border-radius: 13px;
-    padding: 25px;
-    min-height: 190px;
-    transition: .2s;
-    cursor: pointer;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-    border-color: #ff4fa3;
-}
-
-.card-icon {
-    font-size: 29px;
-    margin-bottom: 15px;
-}
-
-.card h3 {
-    font-size: 18px;
-    margin-bottom: 7px;
-}
-
-.card p {
-    color: #858892;
-    font-size: 13px;
-}
-
-/* =========================
-   SEARCH
-========================= */
-
-.search-box {
-    margin-top: 25px;
-    display: flex;
-    max-width: 700px;
-}
-
-.search-box input {
-    flex: 1;
-    padding: 15px;
-    border-radius: 8px 0 0 8px;
-    border: 1px solid #30323a;
-    background: #111217;
-    color: #fff;
-    outline: none;
-}
-
-.search-box input:focus {
-    border-color: #ff4fa3;
-}
-
-.search-box button {
-    padding: 15px 22px;
-    border: none;
-    border-radius: 0 8px 8px 0;
-    background: #ff4fa3;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.search-results {
-    display: none;
-    margin-top: 18px;
-    max-width: 700px;
-}
-
-.search-result {
-    display: block;
-    padding: 16px 18px;
-    margin-bottom: 10px;
-    background: #101116;
-    border: 1px solid #25272e;
-    border-radius: 10px;
-    transition: .2s;
-}
-
-.search-result:hover {
-    border-color: #ff4fa3;
-    transform: translateY(-2px);
-}
-
-.search-result-label {
-    color: #ff4fa3;
-    font-size: 10px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 5px;
-}
-
-.search-result h3 {
-    font-size: 16px;
-    margin-bottom: 4px;
-}
-
-.search-result p {
-    color: #858892;
-    font-size: 13px;
-}
-
-.no-results {
-    padding: 16px;
-    color: #858892;
-    border: 1px solid #25272e;
-    border-radius: 10px;
-    background: #101116;
-}
-
-/* =========================
-   DATABASE SECTION
-========================= */
-
-.database-section {
-    scroll-margin-top: 80px;
-}
-
-.database-intro {
-    color: #858892;
-    margin-bottom: 25px;
-}
-
-/* =========================
-   DETAIL PAGE
-========================= */
-
-.detail-view {
-    display: none;
-    min-height: 70vh;
-    padding-top: 55px;
-}
-
-.detail-container {
-    max-width: 1000px;
-    margin: auto;
-}
-
-.back-button {
-    display: inline-block;
-    margin-bottom: 30px;
-    color: #ff4fa3;
-    font-size: 13px;
-    cursor: pointer;
-}
-
-.detail-card {
-    background: #101116;
-    border: 1px solid #25272e;
-    border-radius: 16px;
-    padding: 40px;
-}
-
-.detail-icon {
-    font-size: 60px;
-    margin-bottom: 20px;
-}
-
-.detail-category {
-    color: #ff4fa3;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 11px;
-    font-weight: bold;
-    margin-bottom: 8px;
-}
-
-.detail-card h1 {
-    font-size: clamp(36px, 6vw, 65px);
-    margin-bottom: 20px;
-    line-height: 1;
-}
-
-.detail-description {
-    color: #aeb0b9;
-    font-size: 17px;
-    max-width: 800px;
-    margin-bottom: 35px;
-}
-
-.detail-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-}
-
-.detail-stat {
-    padding: 18px;
-    background: #15161b;
-    border: 1px solid #25272e;
-    border-radius: 10px;
-}
-
-.detail-stat span {
-    display: block;
-    color: #777a84;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-}
-
-.detail-stat strong {
-    font-size: 15px;
-}
-
-/* =========================
-   FILTERS
-========================= */
-
-.filters {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 25px;
-}
-
-.filter-btn {
-    padding: 9px 15px;
-    border: 1px solid #30323a;
-    background: #111217;
-    color: #aeb0b9;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 12px;
-}
-
-.filter-btn:hover,
-.filter-btn.active {
-    background: #ff4fa3;
-    color: #09090b;
-    border-color: #ff4fa3;
-}
-
-/* =========================
-   ABOUT
-========================= */
-
-.about-box {
-    max-width: 800px;
-    color: #8d9099;
-}
-
-.about-box p {
-    margin-bottom: 15px;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer {
-    border-top: 1px solid #202228;
-    padding: 45px 24px;
-    text-align: center;
-    color: #686b75;
-    font-size: 12px;
-}
-
-footer p + p {
-    margin-top: 8px;
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 800px) {
-
-    .nav-inner {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .nav-links {
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .hero {
-        min-height: 600px;
-    }
-
-    .hero h1 {
-        letter-spacing: -3px;
-    }
-
-    .news-grid,
-    .cards,
-    .detail-grid {
-        grid-template-columns: 1fr;
-    }
-
-    section {
-        padding: 65px 20px;
-    }
-
-    .detail-card {
-        padding: 25px;
-    }
-
-    .search-box {
-        width: 100%;
-    }
-}
-</style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VICECITY HUB | GTA VI News, Guides & Database</title>
+
+    <meta name="description"
+        content="VICECITY HUB is an unofficial GTA VI fan hub featuring news, guides, characters, vehicles, weapons, missions, locations and community resources.">
+
+    <meta name="theme-color" content="#09090b">
+
+    <style>
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #09090b;
+            color: #f5f5f7;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+
+        /* =========================================================
+           VARIABLES
+        ========================================================= */
+
+        :root {
+            --pink: #ff4fa3;
+            --pink-dark: #e63c8e;
+            --bg: #09090b;
+            --card: #101116;
+            --card-hover: #14151b;
+            --border: #25272e;
+            --border-light: #353741;
+            --muted: #858892;
+            --muted-light: #aeb0b9;
+            --white: #ffffff;
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(9, 9, 11, .94);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid #202228;
+        }
+
+        .nav-inner {
+            max-width: 1250px;
+            margin: auto;
+            padding: 16px 24px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 19px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: var(--pink);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: #b8bac3;
+            font-size: 13px;
+            transition: .2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--pink);
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            min-height: 690px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 90px 20px;
+
+            position: relative;
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 50% 20%,
+                    rgba(255,79,163,.12),
+                    transparent 35%
+                ),
+                #09090b;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            opacity: .25;
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,.04) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.04) 1px,
+                    transparent 1px
+                );
+
+            background-size: 50px 50px;
+
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    black,
+                    transparent
+                );
+        }
+
+        .hero-content {
+            max-width: 950px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .eyebrow {
+            display: inline-block;
+
+            border: 1px solid #454650;
+
+            padding: 8px 15px;
+
+            border-radius: 999px;
+
+            color: #b8bac3;
+
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+
+            margin-bottom: 28px;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 11vw, 130px);
+
+            line-height: .85;
+            letter-spacing: -6px;
+
+            margin-bottom: 28px;
+        }
+
+        .hero h1 span {
+            color: var(--pink);
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+
+            color: var(--muted-light);
+            font-size: 18px;
+        }
+
+        .release {
+            margin-top: 25px;
+
+            color: #9699a3;
+            font-size: 14px;
+        }
+
+        .release strong {
+            color: white;
+        }
+
+
+        /* =========================================================
+           COUNTDOWN
+        ========================================================= */
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+
+            margin: 30px auto;
+
+            flex-wrap: wrap;
+        }
+
+        .count-box {
+            min-width: 82px;
+
+            padding: 14px 10px;
+
+            background: rgba(255,255,255,.04);
+
+            border: 1px solid #303139;
+
+            border-radius: 10px;
+        }
+
+        .count-box strong {
+            display: block;
+            font-size: 24px;
+        }
+
+        .count-box span {
+            color: #858892;
+
+            font-size: 10px;
+
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================================================
+           BUTTONS
+        ========================================================= */
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+
+            gap: 14px;
+            flex-wrap: wrap;
+
+            margin-top: 30px;
+        }
+
+        .button {
+            display: inline-block;
+
+            padding: 13px 23px;
+
+            border-radius: 8px;
+
+            border: 1px solid #35363d;
+
+            font-size: 14px;
+            font-weight: bold;
+
+            transition: .2s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            border-color: var(--pink);
+        }
+
+        .button-primary {
+            background: var(--pink);
+            color: #09090b;
+            border-color: var(--pink);
+        }
+
+
+        /* =========================================================
+           GENERAL SECTIONS
+        ========================================================= */
+
+        section {
+            max-width: 1250px;
+            margin: auto;
+            padding: 85px 24px;
+        }
+
+        .section-header {
+            margin-bottom: 28px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            margin-bottom: 6px;
+        }
+
+        .section-header p {
+            color: var(--muted);
+        }
+
+
+        /* =========================================================
+           NEWS
+        ========================================================= */
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 18px;
+        }
+
+        .news-card {
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 14px;
+
+            padding: 28px;
+
+            transition: .2s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-3px);
+            border-color: #44464f;
+        }
+
+        .news-label {
+            color: var(--pink);
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+            font-weight: bold;
+
+            text-transform: uppercase;
+
+            margin-bottom: 12px;
+        }
+
+        .news-card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .news-card p {
+            color: #8d9099;
+            font-size: 14px;
+        }
+
+
+        /* =========================================================
+           CARDS
+        ========================================================= */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 17px;
+        }
+
+        .card {
+            display: block;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 13px;
+
+            padding: 25px;
+
+            min-height: 190px;
+
+            transition: .2s;
+
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--pink);
+            background: var(--card-hover);
+        }
+
+        .card-icon {
+            font-size: 29px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 18px;
+            margin-bottom: 7px;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+
+        /* =========================================================
+           SEARCH
+        ========================================================= */
+
+        .search-box {
+            margin-top: 25px;
+
+            display: flex;
+
+            max-width: 700px;
+        }
+
+        .search-box input {
+            flex: 1;
+
+            padding: 15px;
+
+            border-radius: 8px 0 0 8px;
+
+            border: 1px solid #30323a;
+
+            background: #111217;
+
+            color: white;
+
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: var(--pink);
+        }
+
+        .search-box button {
+            padding: 15px 22px;
+
+            border: none;
+
+            border-radius: 0 8px 8px 0;
+
+            background: var(--pink);
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .search-results {
+            display: none;
+
+            margin-top: 18px;
+
+            max-width: 700px;
+        }
+
+        .search-result {
+            display: block;
+
+            padding: 16px 18px;
+
+            margin-bottom: 10px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 10px;
+
+            transition: .2s;
+        }
+
+        .search-result:hover {
+            border-color: var(--pink);
+            transform: translateY(-2px);
+        }
+
+        .search-result-label {
+            color: var(--pink);
+
+            font-size: 10px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 5px;
+        }
+
+        .search-result h3 {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .search-result p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .no-results {
+            padding: 16px;
+
+            color: var(--muted);
+
+            border: 1px solid var(--border);
+
+            border-radius: 10px;
+
+            background: var(--card);
+        }
+
+
+        /* =========================================================
+           DATABASE LIST
+        ========================================================= */
+
+        .database-section {
+            scroll-margin-top: 80px;
+        }
+
+        .database-list {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 17px;
+        }
+
+        .database-item {
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 13px;
+
+            padding: 24px;
+
+            transition: .2s;
+        }
+
+        .database-item:hover {
+            border-color: var(--pink);
+            transform: translateY(-3px);
+        }
+
+        .database-item .item-icon {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .database-item h3 {
+            margin-bottom: 6px;
+        }
+
+        .database-item p {
+            color: var(--muted);
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .view-link {
+            color: var(--pink);
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================================================
+           DETAIL PAGE
+        ========================================================= */
+
+        #detailPage {
+            display: none;
+
+            min-height: calc(100vh - 70px);
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(255,79,163,.08),
+                    transparent 35%
+                ),
+                #09090b;
+        }
+
+        .detail-container {
+            max-width: 1050px;
+            margin: auto;
+
+            padding: 80px 24px;
+        }
+
+        .back-button {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin-bottom: 35px;
+
+            color: var(--muted-light);
+
+            font-size: 13px;
+
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            color: var(--pink);
+        }
+
+        .detail-hero {
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 18px;
+
+            padding: 45px;
+
+            margin-bottom: 20px;
+        }
+
+        .detail-category {
+            color: var(--pink);
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 10px;
+        }
+
+        .detail-title {
+            font-size: clamp(40px, 7vw, 72px);
+
+            line-height: 1;
+
+            margin-bottom: 20px;
+        }
+
+        .detail-description {
+            color: var(--muted-light);
+
+            max-width: 800px;
+
+            font-size: 17px;
+        }
+
+        .detail-grid {
+            display: grid;
+
+            grid-template-columns:
+                2fr 1fr;
+
+            gap: 20px;
+        }
+
+        .detail-box {
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 15px;
+
+            padding: 28px;
+        }
+
+        .detail-box h2 {
+            font-size: 20px;
+
+            margin-bottom: 15px;
+        }
+
+        .detail-box p {
+            color: var(--muted);
+
+            font-size: 14px;
+
+            margin-bottom: 12px;
+        }
+
+        .detail-list {
+            list-style: none;
+        }
+
+        .detail-list li {
+            padding: 10px 0;
+
+            border-bottom: 1px solid #202228;
+
+            color: var(--muted-light);
+
+            font-size: 13px;
+        }
+
+        .detail-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #696c76;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            font-size: 9px;
+
+            margin-right: 7px;
+        }
+
+        .status {
+            display: inline-block;
+
+            padding: 5px 9px;
+
+            border-radius: 999px;
+
+            background: rgba(255,79,163,.1);
+
+            color: var(--pink);
+
+            font-size: 10px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================================================
+           AD
+        ========================================================= */
+
+        .ad-space {
+            max-width: 1250px;
+
+            margin: auto;
+
+            padding: 20px 24px;
+        }
+
+        .ad-box {
+            min-height: 90px;
+
+            border: 1px dashed #30323a;
+
+            border-radius: 10px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: #555862;
+
+            font-size: 11px;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================================================
+           ABOUT
+        ========================================================= */
+
+        .about-box {
+            max-width: 850px;
+
+            color: #8d9099;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            border-top: 1px solid #202228;
+
+            padding: 45px 24px;
+
+            text-align: center;
+
+            color: #686b75;
+
+            font-size: 12px;
+        }
+
+        footer p + p {
+            margin-top: 8px;
+        }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 850px) {
+
+            .nav-inner {
+                padding: 14px 18px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 65px 20px;
+            }
+
+            .news-grid,
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cards,
+            .database-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .detail-hero {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            .hero {
+                min-height: 650px;
+            }
+
+            .hero h1 {
+                letter-spacing: -3px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .cards,
+            .database-list {
+                grid-template-columns: 1fr;
+            }
+
+            .search-box {
+                display: flex;
+            }
+
+            .search-box input {
+                min-width: 0;
+            }
+
+            .detail-container {
+                padding: 55px 18px;
+            }
+
+            .detail-title {
+                font-size: 42px;
+            }
+
+            .detail-hero {
+                padding: 25px;
+            }
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-<!-- =========================
+
+<!-- =========================================================
      NAVIGATION
-========================= -->
+========================================================= -->
 
 <nav>
+
     <div class="nav-inner">
 
         <a href="#home" class="logo">
@@ -651,536 +944,1023 @@ footer p + p {
         </a>
 
         <div class="nav-links">
+
             <a href="#news">News</a>
-            <a href="#explore">Database</a>
-            <a href="#guides">Guides</a>
+
+            <a href="#explore">Explore</a>
+
+            <a href="#characters">Characters</a>
+
+            <a href="#vehicles">Vehicles</a>
+
+            <a href="#missions">Missions</a>
+
             <a href="#about">About</a>
+
         </div>
 
     </div>
+
 </nav>
 
 
-<!-- =========================
-     MAIN HOME
-========================= -->
+<!-- =========================================================
+     HOME PAGE
+========================================================= -->
 
-<main id="home">
+<main id="homePage">
 
-<header class="hero">
 
-    <div class="hero-content">
+    <!-- HERO -->
 
-        <div class="eyebrow">
-            Unofficial GTA VI Fan Hub
+    <header class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                The Unofficial GTA VI Fan Hub
+            </div>
+
+            <h1>
+                VICECITY<span>HUB</span>
+            </h1>
+
+            <p>
+                Your growing database for GTA VI news,
+                characters, vehicles, weapons, missions,
+                locations, guides and community discoveries.
+            </p>
+
+            <div class="release">
+
+                GTA VI releases
+
+                <strong>
+                    November 19, 2026
+                </strong>
+
+            </div>
+
+
+            <!-- COUNTDOWN -->
+
+            <div class="countdown">
+
+                <div class="count-box">
+
+                    <strong id="days">
+                        0
+                    </strong>
+
+                    <span>
+                        Days
+                    </span>
+
+                </div>
+
+
+                <div class="count-box">
+
+                    <strong id="hours">
+                        0
+                    </strong>
+
+                    <span>
+                        Hours
+                    </span>
+
+                </div>
+
+
+                <div class="count-box">
+
+                    <strong id="minutes">
+                        0
+                    </strong>
+
+                    <span>
+                        Minutes
+                    </span>
+
+                </div>
+
+
+                <div class="count-box">
+
+                    <strong id="seconds">
+                        0
+                    </strong>
+
+                    <span>
+                        Seconds
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="buttons">
+
+                <a
+                    href="#explore"
+                    class="button button-primary"
+                >
+                    Explore GTA VI
+                </a>
+
+                <a
+                    href="#news"
+                    class="button"
+                >
+                    Latest News
+                </a>
+
+            </div>
+
         </div>
 
-        <h1>
-            VICE CITY<br>
-            <span>AWAITS.</span>
-        </h1>
+    </header>
 
-        <p>
-            Your growing database for GTA VI news, characters,
-            vehicles, weapons, missions, locations and guides.
-        </p>
 
-        <div class="release">
-            GTA VI releases
-            <strong>November 19, 2026</strong>
+    <!-- AD -->
+
+    <div class="ad-space">
+
+        <div class="ad-box">
+            ADVERTISEMENT SPACE
         </div>
 
-        <!-- COUNTDOWN -->
+    </div>
 
-        <div class="countdown">
 
-            <div class="count-box">
-                <strong id="days">0</strong>
-                <span>Days</span>
-            </div>
+    <!-- NEWS -->
 
-            <div class="count-box">
-                <strong id="hours">0</strong>
-                <span>Hours</span>
-            </div>
+    <section id="news">
 
-            <div class="count-box">
-                <strong id="minutes">0</strong>
-                <span>Minutes</span>
-            </div>
+        <div class="section-header">
 
-            <div class="count-box">
-                <strong id="seconds">0</strong>
-                <span>Seconds</span>
-            </div>
+            <h2>
+                Latest GTA VI
+            </h2>
+
+            <p>
+                News and officially confirmed information.
+            </p>
 
         </div>
 
-        <div class="buttons">
 
-            <a href="#explore" class="button button-primary">
+        <div class="news-grid">
+
+            <article class="news-card">
+
+                <div class="news-label">
+                    Release
+                </div>
+
+                <h3>
+                    GTA VI is scheduled for November 19, 2026
+                </h3>
+
+                <p>
+                    Rockstar Games has announced November 19,
+                    2026 as the release date for Grand Theft Auto VI.
+                </p>
+
+            </article>
+
+
+            <article class="news-card">
+
+                <div class="news-label">
+                    Database
+                </div>
+
+                <h3>
+                    VICECITY HUB Database
+                </h3>
+
+                <p>
+                    Explore our growing collection of GTA VI
+                    characters, vehicles, weapons, missions
+                    and locations.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- EXPLORE -->
+
+    <section id="explore">
+
+        <div class="section-header">
+
+            <h2>
                 Explore GTA VI
+            </h2>
+
+            <p>
+                Search the VICECITY HUB database.
+            </p>
+
+
+            <!-- SEARCH -->
+
+            <div class="search-box">
+
+                <input
+                    id="searchInput"
+                    type="text"
+                    placeholder="Search Lucia, Jason, cars, missions..."
+                    autocomplete="off"
+                >
+
+                <button onclick="searchSite()">
+                    Search
+                </button>
+
+            </div>
+
+
+            <div
+                id="searchResults"
+                class="search-results"
+            ></div>
+
+        </div>
+
+
+        <div class="cards">
+
+
+            <a
+                href="#characters"
+                class="card"
+            >
+
+                <div class="card-icon">
+                    👤
+                </div>
+
+                <h3>
+                    Characters
+                </h3>
+
+                <p>
+                    Explore Lucia, Jason and other
+                    known GTA VI characters.
+                </p>
+
             </a>
 
-            <a href="#news" class="button">
-                Latest News
+
+            <a
+                href="#vehicles"
+                class="card"
+            >
+
+                <div class="card-icon">
+                    🚗
+                </div>
+
+                <h3>
+                    Vehicles
+                </h3>
+
+                <p>
+                    Browse cars, motorcycles,
+                    aircraft and other vehicles.
+                </p>
+
+            </a>
+
+
+            <a
+                href="#weapons"
+                class="card"
+            >
+
+                <div class="card-icon">
+                    🔫
+                </div>
+
+                <h3>
+                    Weapons
+                </h3>
+
+                <p>
+                    Explore weapons and gameplay
+                    information.
+                </p>
+
+            </a>
+
+
+            <a
+                href="#missions"
+                class="card"
+            >
+
+                <div class="card-icon">
+                    🎯
+                </div>
+
+                <h3>
+                    Missions
+                </h3>
+
+                <p>
+                    Browse missions, objectives
+                    and walkthrough information.
+                </p>
+
+            </a>
+
+
+            <a
+                href="#locations"
+                class="card"
+            >
+
+                <div class="card-icon">
+                    📍
+                </div>
+
+                <h3>
+                    Locations
+                </h3>
+
+                <p>
+                    Discover Vice City, Leonida
+                    and other known locations.
+                </p>
+
+            </a>
+
+
+            <a
+                href="#guides"
+                class="card"
+            >
+
+                <div class="card-icon">
+                    📚
+                </div>
+
+                <h3>
+                    Guides
+                </h3>
+
+                <p>
+                    Tips, completion guides,
+                    money strategies and more.
+                </p>
+
             </a>
 
         </div>
 
-    </div>
-
-</header>
+    </section>
 
 
-<!-- AD -->
+    <!-- CHARACTERS -->
 
-<div class="ad-space">
-    <div class="ad-box">
-        ADVERTISEMENT SPACE
-    </div>
-</div>
+    <section
+        id="characters"
+        class="database-section"
+    >
 
+        <div class="section-header">
 
-<!-- =========================
-     NEWS
-========================= -->
-
-<section id="news">
-
-    <div class="section-header">
-
-        <h2>Latest GTA VI</h2>
-
-        <p>
-            News and information surrounding GTA VI.
-        </p>
-
-    </div>
-
-    <div class="news-grid">
-
-        <article class="news-card">
-
-            <div class="news-label">
-                GTA VI
-            </div>
-
-            <h3>
-                Welcome to VICECITY HUB
-            </h3>
+            <h2>
+                Characters
+            </h2>
 
             <p>
-                VICECITY HUB is being built as an independent
-                fan database for Grand Theft Auto VI.
+                Individual GTA VI character profiles.
             </p>
 
-        </article>
+        </div>
 
 
-        <article class="news-card">
+        <div class="database-list">
 
-            <div class="news-label">
-                Release
-            </div>
+            <a
+                href="#character/lucia"
+                class="database-item"
+            >
 
-            <h3>
-                November 19, 2026
-            </h3>
+                <div class="item-icon">
+                    👩
+                </div>
+
+                <h3>
+                    Lucia
+                </h3>
+
+                <p>
+                    One of GTA VI's two central protagonists.
+                </p>
+
+                <span class="view-link">
+                    View Profile →
+                </span>
+
+            </a>
+
+
+            <a
+                href="#character/jason"
+                class="database-item"
+            >
+
+                <div class="item-icon">
+                    👨
+                </div>
+
+                <h3>
+                    Jason
+                </h3>
+
+                <p>
+                    One of GTA VI's two central protagonists.
+                </p>
+
+                <span class="view-link">
+                    View Profile →
+                </span>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- VEHICLES -->
+
+    <section
+        id="vehicles"
+        class="database-section"
+    >
+
+        <div class="section-header">
+
+            <h2>
+                Vehicles
+            </h2>
 
             <p>
-                The current announced release date for GTA VI.
+                Browse known and documented GTA VI vehicles.
             </p>
 
-        </article>
-
-    </div>
-
-</section>
+        </div>
 
 
-<!-- =========================
-     DATABASE
-========================= -->
-
-<section id="explore">
-
-    <div class="section-header">
-
-        <h2>GTA VI Database</h2>
-
-        <p>
-            Search the VICECITY HUB database.
-        </p>
-
-    </div>
-
-    <div class="search-box">
-
-        <input
-            id="searchInput"
-            type="text"
-            placeholder="Search Lucia, Jason, vehicles, weapons..."
-            autocomplete="off"
-        >
-
-        <button onclick="searchSite()">
-            Search
-        </button>
-
-    </div>
-
-    <div
-        id="searchResults"
-        class="search-results">
-    </div>
+        <div class="database-list">
 
 
-    <br><br>
+            <a
+                href="#vehicle/car"
+                class="database-item"
+            >
 
-    <div class="cards">
+                <div class="item-icon">
+                    🚘
+                </div>
 
-        <a href="#characters" class="card">
+                <h3>
+                    Sports Car
+                </h3>
 
-            <div class="card-icon">👤</div>
+                <p>
+                    High-performance road vehicle category.
+                </p>
 
-            <h3>Characters</h3>
+                <span class="view-link">
+                    View Vehicle →
+                </span>
+
+            </a>
+
+
+            <a
+                href="#vehicle/motorcycle"
+                class="database-item"
+            >
+
+                <div class="item-icon">
+                    🏍️
+                </div>
+
+                <h3>
+                    Motorcycle
+                </h3>
+
+                <p>
+                    Two-wheeled vehicles expected in Leonida.
+                </p>
+
+                <span class="view-link">
+                    View Vehicle →
+                </span>
+
+            </a>
+
+
+            <a
+                href="#vehicle/boat"
+                class="database-item"
+            >
+
+                <div class="item-icon">
+                    🚤
+                </div>
+
+                <h3>
+                    Boat
+                </h3>
+
+                <p>
+                    Watercraft suited for exploring the coast.
+                </p>
+
+                <span class="view-link">
+                    View Vehicle →
+                </span>
+
+            </a>
+
+
+            <a
+                href="#vehicle/aircraft"
+                class="database-item"
+            >
+
+                <div class="item-icon">
+                    🚁
+                </div>
+
+                <h3>
+                    Aircraft
+                </h3>
+
+                <p>
+                    Aircraft category for travel across Leonida.
+                </p>
+
+                <span class="view-link">
+                    View Vehicle →
+                </span>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- WEAPONS -->
+
+    <section
+        id="weapons"
+        class="database-section"
+    >
+
+        <div class="section-header">
+
+            <h2>
+                Weapons
+            </h2>
 
             <p>
-                Explore GTA VI characters and protagonists.
+                GTA VI weapon categories and database entries.
             </p>
 
-        </a>
+        </div>
 
 
-        <a href="#vehicles" class="card">
+        <div class="database-list">
 
-            <div class="card-icon">🚗</div>
 
-            <h3>Vehicles</h3>
+            <a
+                href="#weapon/pistol"
+                class="database-item"
+            >
+
+                <div class="item-icon">
+                    🔫
+                </div>
+
+                <h3>
+                    Pistols
+                </h3>
+
+                <p>
+                    Compact firearms for close and medium-range combat.
+                </p>
+
+                <span class="view-link">
+                    View Database →
+                </span>
+
+            </a>
+
+
+            <a
+                href="#weapon/rifle"
+                class="database-item"
+            >
+
+                <div class="item-icon">
+                    🔥
+                </div>
+
+                <h3>
+                    Rifles
+                </h3>
+
+                <p>
+                    Longer-range firearms for combat situations.
+                </p>
+
+                <span class="view-link">
+                    View Database →
+                </span>
+
+            </a>
+
+
+            <a
+                href="#weapon/melee"
+                class="database-item"
+            >
+
+                <div class="item-icon">
+                    🗡️
+                </div>
+
+                <h3>
+                    Melee
+                </h3>
+
+                <p>
+                    Close-range weapons and equipment.
+                </p>
+
+                <span class="view-link">
+                    View Database →
+                </span>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- MISSIONS -->
+
+    <section
+        id="missions"
+        class="database-section"
+    >
+
+        <div class="section-header">
+
+            <h2>
+                Missions
+            </h2>
 
             <p>
-                Browse cars, motorcycles, aircraft and more.
+                GTA VI missions and walkthrough database.
             </p>
 
-        </a>
+        </div>
 
 
-        <a href="#weapons" class="card">
+        <div class="database-list">
 
-            <div class="card-icon">🔫</div>
 
-            <h3>Weapons</h3>
+            <a
+                href="#mission/welcome-to-vice-city"
+                class="database-item"
+            >
+
+                <div class="item-icon">
+                    🎬
+                </div>
+
+                <h3>
+                    Welcome to Vice City
+                </h3>
+
+                <p>
+                    Mission information will be added as details become available.
+                </p>
+
+                <span class="view-link">
+                    Open Mission →
+                </span>
+
+            </a>
+
+
+            <a
+                href="#mission/mission-database"
+                class="database-item"
+            >
+
+                <div class="item-icon">
+                    🎯
+                </div>
+
+                <h3>
+                    Mission Database
+                </h3>
+
+                <p>
+                    Browse future mission objectives and walkthroughs.
+                </p>
+
+                <span class="view-link">
+                    Open Database →
+                </span>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- LOCATIONS -->
+
+    <section
+        id="locations"
+        class="database-section"
+    >
+
+        <div class="section-header">
+
+            <h2>
+                Locations
+            </h2>
 
             <p>
-                Explore weapons and gameplay information.
+                Explore the world of GTA VI.
             </p>
 
-        </a>
+        </div>
 
 
-        <a href="#missions" class="card">
+        <div class="database-list">
 
-            <div class="card-icon">🎯</div>
 
-            <h3>Missions</h3>
+            <a
+                href="#location/vice-city"
+                class="database-item"
+            >
+
+                <div class="item-icon">
+                    🌴
+                </div>
+
+                <h3>
+                    Vice City
+                </h3>
+
+                <p>
+                    The iconic fictional city returning in GTA VI.
+                </p>
+
+                <span class="view-link">
+                    Explore Location →
+                </span>
+
+            </a>
+
+
+            <a
+                href="#location/leonida"
+                class="database-item"
+            >
+
+                <div class="item-icon">
+                    🗺️
+                </div>
+
+                <h3>
+                    Leonida
+                </h3>
+
+                <p>
+                    The fictional state where GTA VI takes place.
+                </p>
+
+                <span class="view-link">
+                    Explore Location →
+                </span>
+
+            </a>
+
+
+            <a
+                href="#location/beach"
+                class="database-item"
+            >
+
+                <div class="item-icon">
+                    🏖️
+                </div>
+
+                <h3>
+                    Beaches
+                </h3>
+
+                <p>
+                    Coastal areas and beach environments.
+                </p>
+
+                <span class="view-link">
+                    Explore Location →
+                </span>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- GUIDES -->
+
+    <section
+        id="guides"
+        class="database-section"
+    >
+
+        <div class="section-header">
+
+            <h2>
+                Guides
+            </h2>
 
             <p>
-                Discover missions, objectives and walkthroughs.
+                Useful GTA VI resources for players.
             </p>
 
-        </a>
+        </div>
 
 
-        <a href="#locations" class="card">
+        <div class="database-list">
 
-            <div class="card-icon">📍</div>
 
-            <h3>Locations</h3>
+            <a
+                href="#guide/money"
+                class="database-item"
+            >
+
+                <div class="item-icon">
+                    💰
+                </div>
+
+                <h3>
+                    Money Guide
+                </h3>
+
+                <p>
+                    Future strategies for earning and managing money.
+                </p>
+
+                <span class="view-link">
+                    Read Guide →
+                </span>
+
+            </a>
+
+
+            <a
+                href="#guide/100-completion"
+                class="database-item"
+            >
+
+                <div class="item-icon">
+                    💯
+                </div>
+
+                <h3>
+                    100% Completion
+                </h3>
+
+                <p>
+                    Track missions, collectibles and activities.
+                </p>
+
+                <span class="view-link">
+                    Read Guide →
+                </span>
+
+            </a>
+
+
+            <a
+                href="#guide/tips"
+                class="database-item"
+            >
+
+                <div class="item-icon">
+                    💡
+                </div>
+
+                <h3>
+                    Tips & Tricks
+                </h3>
+
+                <p>
+                    Useful gameplay tips and discoveries.
+                </p>
+
+                <span class="view-link">
+                    Read Guide →
+                </span>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <div class="section-header">
+
+            <h2>
+                About VICECITY HUB
+            </h2>
+
+        </div>
+
+        <div class="about-box">
 
             <p>
-                Explore Vice City and the wider state of Leonida.
+                VICECITY HUB is an unofficial fan-made GTA VI
+                community platform designed to organize news,
+                guides, characters, vehicles, weapons, missions,
+                locations and other information surrounding
+                Grand Theft Auto VI.
             </p>
 
-        </a>
-
-
-        <a href="#guides" class="card">
-
-            <div class="card-icon">📖</div>
-
-            <h3>Guides</h3>
+            <br>
 
             <p>
-                Tips, tricks, money guides and completion guides.
+                VICECITY HUB is not affiliated with Rockstar Games,
+                Take-Two Interactive or any of their subsidiaries.
             </p>
 
-        </a>
+        </div>
 
-    </div>
-
-</section>
-
-
-<!-- =========================
-     CHARACTERS
-========================= -->
-
-<section id="characters" class="database-section">
-
-    <div class="section-header">
-
-        <h2>Characters</h2>
-
-        <p>
-            Main characters currently known from GTA VI.
-        </p>
-
-    </div>
-
-    <div class="filters">
-
-        <button
-            class="filter-btn active"
-            onclick="filterDatabase('characters','all',this)">
-            All
-        </button>
-
-        <button
-            class="filter-btn"
-            onclick="filterDatabase('characters','protagonist',this)">
-            Protagonists
-        </button>
-
-    </div>
-
-    <div class="cards" id="characters-grid"></div>
-
-</section>
-
-
-<!-- =========================
-     VEHICLES
-========================= -->
-
-<section id="vehicles" class="database-section">
-
-    <div class="section-header">
-
-        <h2>Vehicles</h2>
-
-        <p>
-            GTA VI vehicles database.
-        </p>
-
-    </div>
-
-    <div class="filters">
-
-        <button
-            class="filter-btn active"
-            onclick="filterDatabase('vehicles','all',this)">
-            All
-        </button>
-
-        <button
-            class="filter-btn"
-            onclick="filterDatabase('vehicles','car',this)">
-            Cars
-        </button>
-
-        <button
-            class="filter-btn"
-            onclick="filterDatabase('vehicles','motorcycle',this)">
-            Motorcycles
-        </button>
-
-        <button
-            class="filter-btn"
-            onclick="filterDatabase('vehicles','aircraft',this)">
-            Aircraft
-        </button>
-
-    </div>
-
-    <div class="cards" id="vehicles-grid"></div>
-
-</section>
-
-
-<!-- =========================
-     WEAPONS
-========================= -->
-
-<section id="weapons" class="database-section">
-
-    <div class="section-header">
-
-        <h2>Weapons</h2>
-
-        <p>
-            GTA VI weapons database.
-        </p>
-
-    </div>
-
-    <div class="filters">
-
-        <button
-            class="filter-btn active"
-            onclick="filterDatabase('weapons','all',this)">
-            All
-        </button>
-
-        <button
-            class="filter-btn"
-            onclick="filterDatabase('weapons','firearm',this)">
-            Firearms
-        </button>
-
-        <button
-            class="filter-btn"
-            onclick="filterDatabase('weapons','melee',this)">
-            Melee
-        </button>
-
-    </div>
-
-    <div class="cards" id="weapons-grid"></div>
-
-</section>
-
-
-<!-- =========================
-     MISSIONS
-========================= -->
-
-<section id="missions" class="database-section">
-
-    <div class="section-header">
-
-        <h2>Missions</h2>
-
-        <p>
-            GTA VI mission database.
-        </p>
-
-    </div>
-
-    <div class="cards" id="missions-grid"></div>
-
-</section>
-
-
-<!-- =========================
-     LOCATIONS
-========================= -->
-
-<section id="locations" class="database-section">
-
-    <div class="section-header">
-
-        <h2>Locations</h2>
-
-        <p>
-            Places and regions throughout Leonida.
-        </p>
-
-    </div>
-
-    <div class="cards" id="locations-grid"></div>
-
-</section>
-
-
-<!-- =========================
-     GUIDES
-========================= -->
-
-<section id="guides">
-
-    <div class="section-header">
-
-        <h2>Guides</h2>
-
-        <p>
-            Useful GTA VI guides and resources.
-        </p>
-
-    </div>
-
-    <div class="cards" id="guides-grid"></div>
-
-</section>
-
-
-<!-- =========================
-     ABOUT
-========================= -->
-
-<section id="about">
-
-    <div class="section-header">
-
-        <h2>About VICECITY HUB</h2>
-
-    </div>
-
-    <div class="about-box">
-
-        <p>
-            VICECITY HUB is an unofficial fan-made GTA VI
-            community platform created to organize information
-            about Grand Theft Auto VI.
-        </p>
-
-        <p>
-            The platform is not affiliated with or endorsed by
-            Rockstar Games or Take-Two Interactive.
-        </p>
-
-        <p>
-            As the game develops, the database can be expanded
-            with additional characters, vehicles, weapons,
-            missions, locations, guides and community features.
-        </p>
-
-    </div>
-
-</section>
+    </section>
 
 </main>
 
 
-<!-- =========================
-     INDIVIDUAL DATABASE VIEW
-========================= -->
+<!-- =========================================================
+     INDIVIDUAL DATABASE PAGE
+========================================================= -->
 
-<section id="detailView" class="detail-view">
+<main id="detailPage">
 
     <div class="detail-container">
 
-        <a
-            href="#explore"
+        <div
             class="back-button"
-            onclick="closeDetail()"
+            onclick="goBackToDatabase()"
         >
-            ← Back to Database
-        </a>
+            ← Back to VICECITY HUB
+        </div>
+
 
         <div
             id="detailContent"
-            class="detail-card">
-        </div>
+        ></div>
 
     </div>
 
-</section>
+</main>
 
 
-<!-- =========================
+<!-- =========================================================
      FOOTER
-========================= -->
+========================================================= -->
 
 <footer>
 
@@ -1189,7 +1969,7 @@ footer p + p {
     </p>
 
     <p>
-        Unofficial GTA VI fan website. Not affiliated with Rockstar Games.
+        Unofficial GTA VI fan project. Not affiliated with Rockstar Games.
     </p>
 
 </footer>
@@ -1197,905 +1977,998 @@ footer p + p {
 
 <script>
 
-/* =========================
-   COUNTDOWN
-========================= */
 
-const launchDate =
-    new Date(
-        "November 19, 2026 00:00:00"
-    ).getTime();
+    /* =========================================================
+       COUNTDOWN
+    ========================================================= */
 
-
-function updateCountdown() {
-
-    const now =
-        new Date().getTime();
-
-    const distance =
-        launchDate - now;
+    const launchDate =
+        new Date(
+            "November 19, 2026 00:00:00"
+        ).getTime();
 
 
-    if (distance <= 0) {
+    function updateCountdown() {
 
-        document.getElementById("days").textContent = "0";
-        document.getElementById("hours").textContent = "0";
-        document.getElementById("minutes").textContent = "0";
-        document.getElementById("seconds").textContent = "0";
+        const now =
+            new Date().getTime();
 
-        return;
+        const distance =
+            launchDate - now;
+
+
+        if (distance <= 0) {
+
+            document.getElementById("days").textContent = "0";
+            document.getElementById("hours").textContent = "0";
+            document.getElementById("minutes").textContent = "0";
+            document.getElementById("seconds").textContent = "0";
+
+            return;
+        }
+
+
+        const days =
+            Math.floor(
+                distance /
+                (1000 * 60 * 60 * 24)
+            );
+
+
+        const hours =
+            Math.floor(
+                (distance %
+                    (1000 * 60 * 60 * 24)) /
+                (1000 * 60 * 60)
+            );
+
+
+        const minutes =
+            Math.floor(
+                (distance %
+                    (1000 * 60 * 60)) /
+                (1000 * 60)
+            );
+
+
+        const seconds =
+            Math.floor(
+                (distance %
+                    (1000 * 60)) /
+                1000
+            );
+
+
+        document.getElementById(
+            "days"
+        ).textContent = days;
+
+
+        document.getElementById(
+            "hours"
+        ).textContent = hours;
+
+
+        document.getElementById(
+            "minutes"
+        ).textContent = minutes;
+
+
+        document.getElementById(
+            "seconds"
+        ).textContent = seconds;
+
     }
 
 
-    const days =
-        Math.floor(
-            distance /
-            (1000 * 60 * 60 * 24)
-        );
-
-
-    const hours =
-        Math.floor(
-            (distance %
-                (1000 * 60 * 60 * 24)) /
-            (1000 * 60 * 60)
-        );
-
-
-    const minutes =
-        Math.floor(
-            (distance %
-                (1000 * 60 * 60)) /
-            (1000 * 60)
-        );
-
-
-    const seconds =
-        Math.floor(
-            (distance %
-                (1000 * 60)) /
-            1000
-        );
-
-
-    document.getElementById("days").textContent =
-        days;
-
-    document.getElementById("hours").textContent =
-        hours;
-
-    document.getElementById("minutes").textContent =
-        minutes;
-
-    document.getElementById("seconds").textContent =
-        seconds;
-}
-
-
-updateCountdown();
-
-setInterval(
-    updateCountdown,
-    1000
-);
-
-
-/* =========================
-   DATABASE
-========================= */
-
-const gtaDatabase = [
-
-    /* CHARACTERS */
-
-    {
-        id: "lucia",
-        title: "Lucia",
-        category: "Character",
-        type: "protagonist",
-        icon: "👤",
-
-        description:
-            "Lucia is one of the two central protagonists of Grand Theft Auto VI.",
-
-        details: {
-            "Category": "Main Protagonist",
-            "Game": "Grand Theft Auto VI",
-            "Partner": "Jason",
-            "Location": "Leonida"
-        }
-    },
-
-
-    {
-        id: "jason",
-        title: "Jason",
-        category: "Character",
-        type: "protagonist",
-        icon: "👤",
-
-        description:
-            "Jason is one of the two central protagonists of Grand Theft Auto VI.",
-
-        details: {
-            "Category": "Main Protagonist",
-            "Game": "Grand Theft Auto VI",
-            "Partner": "Lucia",
-            "Location": "Leonida"
-        }
-    },
-
-
-    /* VEHICLES */
-
-    {
-        id: "sports-cars",
-        title: "Sports Cars",
-        category: "Vehicle",
-        type: "car",
-        icon: "🏎️",
-
-        description:
-            "High-performance cars expected to play an important role in GTA VI.",
-
-        details: {
-            "Category": "Cars",
-            "Performance": "High",
-            "Use": "Street / Racing",
-            "Database": "Vehicle"
-        }
-    },
-
-
-    {
-        id: "motorcycles",
-        title: "Motorcycles",
-        category: "Vehicle",
-        type: "motorcycle",
-        icon: "🏍️",
-
-        description:
-            "Motorcycles are part of the expanding GTA VI vehicle database.",
-
-        details: {
-            "Category": "Motorcycles",
-            "Performance": "Varies",
-            "Use": "Transportation",
-            "Database": "Vehicle"
-        }
-    },
-
-
-    {
-        id: "aircraft",
-        title: "Aircraft",
-        category: "Vehicle",
-        type: "aircraft",
-        icon: "🚁",
-
-        description:
-            "Aircraft will allow players to explore Leonida from above.",
-
-        details: {
-            "Category": "Aircraft",
-            "Types": "Helicopters / Planes",
-            "Use": "Air Transportation",
-            "Database": "Vehicle"
-        }
-    },
-
-
-    /* WEAPONS */
-
-    {
-        id: "pistol",
-        title: "Pistols",
-        category: "Weapon",
-        type: "firearm",
-        icon: "🔫",
-
-        description:
-            "A standard firearm category expected to appear in GTA VI.",
-
-        details: {
-            "Category": "Firearm",
-            "Class": "Handgun",
-            "Use": "Combat",
-            "Database": "Weapons"
-        }
-    },
-
-
-    {
-        id: "melee",
-        title: "Melee Weapons",
-        category: "Weapon",
-        type: "melee",
-        icon: "🔪",
-
-        description:
-            "Close-range weapons form another part of the GTA VI weapons system.",
-
-        details: {
-            "Category": "Melee",
-            "Range": "Close",
-            "Use": "Combat",
-            "Database": "Weapons"
-        }
-    },
-
-
-    /* MISSIONS */
-
-    {
-        id: "mission-database",
-        title: "GTA VI Missions",
-        category: "Mission",
-        type: "mission",
-        icon: "🎯",
-
-        description:
-            "The mission database will organize GTA VI story missions, objectives and walkthrough information.",
-
-        details: {
-            "Category": "Story Missions",
-            "Objectives": "Mission-specific",
-            "Walkthroughs": "Coming",
-            "Database": "Missions"
-        }
-    },
-
-
-    /* LOCATIONS */
-
-    {
-        id: "vice-city",
-        title: "Vice City",
-        category: "Location",
-        type: "location",
-        icon: "🌴",
-
-        description:
-            "Vice City returns as one of the major settings of GTA VI.",
-
-        details: {
-            "Region": "Leonida",
-            "Type": "City",
-            "Game": "Grand Theft Auto VI",
-            "Database": "Locations"
-        }
-    },
-
-
-    {
-        id: "leonida",
-        title: "Leonida",
-        category: "Location",
-        type: "location",
-        icon: "🗺️",
-
-        description:
-            "Leonida is the fictional state where GTA VI takes place.",
-
-        details: {
-            "Type": "State",
-            "Main City": "Vice City",
-            "Game": "Grand Theft Auto VI",
-            "Database": "Locations"
-        }
-    },
-
-
-    /* GUIDES */
-
-    {
-        id: "money-guide",
-        title: "Money Guide",
-        category: "Guide",
-        type: "guide",
-        icon: "💰",
-
-        description:
-            "A future guide covering ways players can earn and manage money in GTA VI.",
-
-        details: {
-            "Category": "Money",
-            "Status": "Planned",
-            "Database": "Guides",
-            "Difficulty": "Beginner"
-        }
-    },
-
-
-    {
-        id: "completion-guide",
-        title: "100% Completion",
-        category: "Guide",
-        type: "guide",
-        icon: "🏆",
-
-        description:
-            "Track missions, collectibles, activities and other requirements for full completion.",
-
-        details: {
-            "Category": "Completion",
-            "Status": "Planned",
-            "Database": "Guides",
-            "Difficulty": "Advanced"
-        }
-    },
-
-
-    {
-        id: "tips-guide",
-        title: "GTA VI Tips & Tricks",
-        category: "Guide",
-        type: "guide",
-        icon: "💡",
-
-        description:
-            "Gameplay tips, tricks and discoveries for GTA VI players.",
-
-        details: {
-            "Category": "Gameplay",
-            "Status": "Planned",
-            "Database": "Guides",
-            "Difficulty": "All Players"
-        }
-    }
-
-];
-
-
-/* =========================
-   ESCAPE HTML
-========================= */
-
-function escapeHTML(text) {
-
-    return String(text)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-}
-
-
-/* =========================
-   CREATE CARD
-========================= */
-
-function createCard(item) {
-
-    const card =
-        document.createElement("a");
-
-    card.href =
-        "#" + item.id;
-
-    card.className =
-        "card";
-
-    card.innerHTML = `
-
-        <div class="card-icon">
-            ${item.icon}
-        </div>
-
-        <h3>
-            ${escapeHTML(item.title)}
-        </h3>
-
-        <p>
-            ${escapeHTML(item.description)}
-        </p>
-
-    `;
-
-
-    card.addEventListener(
-        "click",
-        function(event) {
-
-            event.preventDefault();
-
-            openDetail(item.id);
-
-        }
+    updateCountdown();
+
+    setInterval(
+        updateCountdown,
+        1000
     );
 
 
-    return card;
-}
+    /* =========================================================
+       GTA VI DATABASE
+    ========================================================= */
+
+    const gtaDatabase = {
 
 
-/* =========================
-   RENDER DATABASE
-========================= */
+        /* =====================================================
+           CHARACTERS
+        ===================================================== */
 
-function renderDatabase() {
+        "character/lucia": {
 
-    const sections = {
+            category: "Character",
 
-        characters:
-            "characters-grid",
+            title: "Lucia",
 
-        vehicles:
-            "vehicles-grid",
+            icon: "👩",
 
-        weapons:
-            "weapons-grid",
+            description:
+                "Lucia is one of the two central protagonists of Grand Theft Auto VI.",
 
-        missions:
-            "missions-grid",
+            status:
+                "Confirmed",
 
-        locations:
-            "locations-grid",
+            overview:
+                "Lucia is one of the main protagonists of GTA VI. Rockstar's promotional material places her at the center of the game's story alongside Jason.",
 
-        guides:
-            "guides-grid"
+            facts: [
+
+                "Central protagonist",
+
+                "Appears alongside Jason",
+
+                "Major figure in the GTA VI storyline",
+
+                "Featured prominently in official promotional material"
+
+            ],
+
+            note:
+                "Additional character information should be updated as Rockstar officially reveals more details."
+
+        },
+
+
+        /* =====================================================
+           JASON
+        ===================================================== */
+
+        "character/jason": {
+
+            category: "Character",
+
+            title: "Jason",
+
+            icon: "👨",
+
+            description:
+                "Jason is one of the two central protagonists of Grand Theft Auto VI.",
+
+            status:
+                "Confirmed",
+
+            overview:
+                "Jason is one of GTA VI's two principal protagonists and is closely connected to Lucia throughout the game's story.",
+
+            facts: [
+
+                "Central protagonist",
+
+                "Works closely with Lucia",
+
+                "Major figure in the GTA VI storyline",
+
+                "Featured in official promotional material"
+
+            ],
+
+            note:
+                "More information will be added as official details become available."
+
+        },
+
+
+        /* =====================================================
+           VEHICLES
+        ===================================================== */
+
+        "vehicle/car": {
+
+            category: "Vehicle",
+
+            title: "Sports Cars",
+
+            icon: "🚘",
+
+            description:
+                "High-performance road vehicles are expected to play a major role in GTA VI.",
+
+            status:
+                "Database Entry",
+
+            overview:
+                "Sports cars are one of the core vehicle categories in the Grand Theft Auto series. GTA VI is expected to feature a wide variety of performance-oriented automobiles.",
+
+            facts: [
+
+                "High-performance road vehicles",
+
+                "Suitable for fast travel",
+
+                "Expected to include multiple vehicle classes",
+
+                "Performance information can be expanded after release"
+
+            ],
+
+            note:
+                "Individual vehicle models should only be listed as confirmed when supported by reliable official or in-game information."
+
+        },
+
+
+        "vehicle/motorcycle": {
+
+            category: "Vehicle",
+
+            title: "Motorcycles",
+
+            icon: "🏍️",
+
+            description:
+                "Motorcycles are a returning vehicle category for the GTA universe.",
+
+            status:
+                "Database Entry",
+
+            overview:
+                "Motorcycles provide a fast and flexible way of travelling through urban and rural environments.",
+
+            facts: [
+
+                "Two-wheeled vehicles",
+
+                "Useful for navigating traffic",
+
+                "Expected to feature different performance types",
+
+                "Individual models can be added to the database"
+
+            ],
+
+            note:
+                "Performance statistics will be added when reliable game data becomes available."
+
+        },
+
+
+        "vehicle/boat": {
+
+            category: "Vehicle",
+
+            title: "Boats",
+
+            icon: "🚤",
+
+            description:
+                "Watercraft are expected to be important across the coastal areas of Leonida.",
+
+            status:
+                "Database Entry",
+
+            overview:
+                "With GTA VI's coastal setting and expanded world, boats provide an important way to explore waterways and offshore areas.",
+
+            facts: [
+
+                "Water-based transportation",
+
+                "Useful for coastal exploration",
+
+                "Different classes may offer different speeds",
+
+                "Suitable for exploring offshore areas"
+
+            ],
+
+            note:
+                "The vehicle database can be expanded with individual boat models."
+
+        },
+
+
+        "vehicle/aircraft": {
+
+            category: "Vehicle",
+
+            title: "Aircraft",
+
+            icon: "🚁",
+
+            description:
+                "Aircraft allow players to travel quickly across the large GTA VI world.",
+
+            status:
+                "Database Entry",
+
+            overview:
+                "Aircraft have historically been an important part of Grand Theft Auto gameplay and are expected to return in GTA VI.",
+
+            facts: [
+
+                "Fast long-distance transportation",
+
+                "Includes helicopters and other aircraft categories",
+
+                "Useful for exploring the world",
+
+                "Individual aircraft can be catalogued"
+
+            ],
+
+            note:
+                "Specific aircraft statistics should be added after reliable information becomes available."
+
+        },
+
+
+        /* =====================================================
+           WEAPONS
+        ===================================================== */
+
+        "weapon/pistol": {
+
+            category: "Weapon",
+
+            title: "Pistols",
+
+            icon: "🔫",
+
+            description:
+                "Compact firearms designed for close and medium-range combat.",
+
+            status:
+                "Database Category",
+
+            overview:
+                "Pistols are a staple weapon category in the Grand Theft Auto series and are expected to return in GTA VI.",
+
+            facts: [
+
+                "Compact firearm category",
+
+                "Suitable for close-range combat",
+
+                "Likely to include multiple models",
+
+                "Weapon statistics can be expanded after release"
+
+            ],
+
+            note:
+                "Specific weapon models and statistics should be verified before publication."
+
+        },
+
+
+        "weapon/rifle": {
+
+            category: "Weapon",
+
+            title: "Rifles",
+
+            icon: "🔥",
+
+            description:
+                "Longer-range firearms designed for combat situations.",
+
+            status:
+                "Database Category",
+
+            overview:
+                "Rifles have appeared throughout the Grand Theft Auto franchise and are expected to form part of GTA VI's weapon arsenal.",
+
+            facts: [
+
+                "Longer-range firearm category",
+
+                "Designed for combat",
+
+                "Expected to include different models",
+
+                "Detailed statistics can be added later"
+
+            ],
+
+            note:
+                "Individual weapons should be added only when reliably documented."
+
+        },
+
+
+        "weapon/melee": {
+
+            category: "Weapon",
+
+            title: "Melee Weapons",
+
+            icon: "🗡️",
+
+            description:
+                "Close-range weapons used without conventional firearms.",
+
+            status:
+                "Database Category",
+
+            overview:
+                "Melee weapons have traditionally provided alternative close-range combat options throughout the Grand Theft Auto series.",
+
+            facts: [
+
+                "Close-range combat category",
+
+                "Does not rely on firearms",
+
+                "Can include multiple weapon types",
+
+                "Individual entries can be added"
+
+            ],
+
+            note:
+                "Specific GTA VI melee weapons should be verified before being listed as confirmed."
+
+        },
+
+
+        /* =====================================================
+           MISSIONS
+        ===================================================== */
+
+        "mission/welcome-to-vice-city": {
+
+            category: "Mission",
+
+            title: "Welcome to Vice City",
+
+            icon: "🎬",
+
+            description:
+                "A database placeholder for one of the game's story missions.",
+
+            status:
+                "Coming Soon",
+
+            overview:
+                "This page is prepared for mission information. Detailed objectives, rewards, characters and walkthrough instructions should be added once the relevant mission information is officially available.",
+
+            facts: [
+
+                "Story mission database entry",
+
+                "Objectives: Coming Soon",
+
+                "Rewards: Coming Soon",
+
+                "Walkthrough: Coming Soon"
+
+            ],
+
+            note:
+                "Do not treat placeholder mission information as an officially confirmed mission title."
+
+        },
+
+
+        "mission/mission-database": {
+
+            category: "Missions",
+
+            title: "Mission Database",
+
+            icon: "🎯",
+
+            description:
+                "The central VICECITY HUB mission database.",
+
+            status:
+                "Coming Soon",
+
+            overview:
+                "After GTA VI launches, this database can contain mission objectives, walkthroughs, rewards, characters involved and completion requirements.",
+
+            facts: [
+
+                "Story missions",
+
+                "Side missions",
+
+                "Mission objectives",
+
+                "Walkthroughs",
+
+                "Completion tracking"
+
+            ],
+
+            note:
+                "This section is designed to grow into a complete GTA VI mission guide."
+
+        },
+
+
+        /* =====================================================
+           LOCATIONS
+        ===================================================== */
+
+        "location/vice-city": {
+
+            category: "Location",
+
+            title: "Vice City",
+
+            icon: "🌴",
+
+            description:
+                "The iconic fictional city returning as a major setting in GTA VI.",
+
+            status:
+                "Confirmed",
+
+            overview:
+                "Vice City returns in GTA VI as part of the game's fictional state of Leonida. The setting draws heavily from the atmosphere of South Florida.",
+
+            facts: [
+
+                "Major GTA VI setting",
+
+                "Located within Leonida",
+
+                "Urban and coastal environments",
+
+                "Inspired by South Florida"
+
+            ],
+
+            note:
+                "The location database will expand with individual districts, businesses, landmarks and points of interest."
+
+        },
+
+
+        "location/leonida": {
+
+            category: "Location",
+
+            title: "Leonida",
+
+            icon: "🗺️",
+
+            description:
+                "The fictional state in which Grand Theft Auto VI takes place.",
+
+            status:
+                "Confirmed",
+
+            overview:
+                "Leonida is the fictional state that serves as GTA VI's main setting. It contains Vice City and surrounding environments.",
+
+            facts: [
+
+                "Fictional U.S.-inspired state",
+
+                "Contains Vice City",
+
+                "Includes urban and rural environments",
+
+                "Designed as GTA VI's main world"
+
+            ],
+
+            note:
+                "More individual locations can be added as the world is documented."
+
+        },
+
+
+        "location/beach": {
+
+            category: "Location",
+
+            title: "Beaches",
+
+            icon: "🏖️",
+
+            description:
+                "Coastal environments form an important part of GTA VI's world.",
+
+            status:
+                "Location Category",
+
+            overview:
+                "GTA VI's Florida-inspired setting provides numerous coastal environments, beaches and waterfront areas.",
+
+            facts: [
+
+                "Coastal environments",
+
+                "Waterfront activities",
+
+                "Urban beach areas",
+
+                "Potential exploration locations"
+
+            ],
+
+            note:
+                "Individual beaches and landmarks can be added as the world database expands."
+
+        },
+
+
+        /* =====================================================
+           GUIDES
+        ===================================================== */
+
+        "guide/money": {
+
+            category: "Guide",
+
+            title: "GTA VI Money Guide",
+
+            icon: "💰",
+
+            description:
+                "A future guide covering money-making strategies in GTA VI.",
+
+            status:
+                "Coming Soon",
+
+            overview:
+                "This guide will eventually cover legitimate ways to earn and manage money throughout GTA VI's gameplay systems.",
+
+            facts: [
+
+                "Money-making methods",
+
+                "Businesses",
+
+                "Activities",
+
+                "Purchases",
+
+                "Money management"
+
+            ],
+
+            note:
+                "The guide should be updated with tested strategies after release."
+
+        },
+
+
+        "guide/100-completion": {
+
+            category: "Guide",
+
+            title: "100% Completion",
+
+            icon: "💯",
+
+            description:
+                "A future tracker for completing GTA VI's major activities.",
+
+            status:
+                "Coming Soon",
+
+            overview:
+                "The 100% completion guide will track missions, collectibles, activities and other requirements once the complete game is available.",
+
+            facts: [
+
+                "Story missions",
+
+                "Collectibles",
+
+                "Side activities",
+
+                "Challenges",
+
+                "Completion requirements"
+
+            ],
+
+            note:
+                "Requirements will be verified against the final released game."
+
+        },
+
+
+        "guide/tips": {
+
+            category: "Guide",
+
+            title: "GTA VI Tips & Tricks",
+
+            icon: "💡",
+
+            description:
+                "A growing collection of useful GTA VI gameplay tips.",
+
+            status:
+                "Coming Soon",
+
+            overview:
+                "This section will become a practical resource containing beginner advice, hidden mechanics, useful strategies and community discoveries.",
+
+            facts: [
+
+                "Beginner tips",
+
+                "Gameplay mechanics",
+
+                "Hidden features",
+
+                "Exploration tips",
+
+                "Community discoveries"
+
+            ],
+
+            note:
+                "Tips should be tested and verified before being presented as fact."
+
+        }
 
     };
 
 
-    Object.keys(sections)
-        .forEach(section => {
+    /* =========================================================
+       SEARCH
+    ========================================================= */
 
-            const grid =
-                document.getElementById(
-                    sections[section]
+    function searchSite() {
+
+        const input =
+            document.getElementById(
+                "searchInput"
+            );
+
+        const results =
+            document.getElementById(
+                "searchResults"
+            );
+
+        const query =
+            input.value
+                .trim()
+                .toLowerCase();
+
+
+        if (!query) {
+
+            results.style.display = "none";
+
+            results.innerHTML = "";
+
+            return;
+        }
+
+
+        const matches =
+            Object.entries(gtaDatabase)
+                .filter(
+                    ([key, item]) => {
+
+                        const searchableText =
+                            (
+                                key +
+                                " " +
+                                item.title +
+                                " " +
+                                item.category +
+                                " " +
+                                item.description +
+                                " " +
+                                item.overview +
+                                " " +
+                                item.facts.join(" ")
+                            ).toLowerCase();
+
+
+                        return searchableText.includes(
+                            query
+                        );
+
+                    }
                 );
 
 
-            if (!grid) return;
+        results.innerHTML = "";
 
 
-            let items = [];
+        if (matches.length === 0) {
 
+            results.innerHTML = `
 
-            if (section === "characters") {
+                <div class="no-results">
 
-                items =
-                    gtaDatabase.filter(
-                        item =>
-                            item.category ===
-                            "Character"
-                    );
+                    No GTA VI results found for
+                    "<strong>${escapeHTML(query)}</strong>".
 
-            }
+                </div>
 
+            `;
 
-            if (section === "vehicles") {
+            results.style.display = "block";
 
-                items =
-                    gtaDatabase.filter(
-                        item =>
-                            item.category ===
-                            "Vehicle"
-                    );
+            return;
+        }
 
-            }
 
+        matches.forEach(
+            ([key, item]) => {
 
-            if (section === "weapons") {
+                const result =
+                    document.createElement("a");
 
-                items =
-                    gtaDatabase.filter(
-                        item =>
-                            item.category ===
-                            "Weapon"
-                    );
 
-            }
+                result.href =
+                    "#" + key;
 
 
-            if (section === "missions") {
+                result.className =
+                    "search-result";
 
-                items =
-                    gtaDatabase.filter(
-                        item =>
-                            item.category ===
-                            "Mission"
-                    );
 
-            }
+                result.innerHTML = `
 
+                    <div class="search-result-label">
 
-            if (section === "locations") {
-
-                items =
-                    gtaDatabase.filter(
-                        item =>
-                            item.category ===
-                            "Location"
-                    );
-
-            }
-
-
-            if (section === "guides") {
-
-                items =
-                    gtaDatabase.filter(
-                        item =>
-                            item.category ===
-                            "Guide"
-                    );
-
-            }
-
-
-            grid.innerHTML = "";
-
-
-            items.forEach(item => {
-
-                grid.appendChild(
-                    createCard(item)
-                );
-
-            });
-
-        });
-}
-
-
-renderDatabase();
-
-
-/* =========================
-   FILTER DATABASE
-========================= */
-
-function filterDatabase(
-    section,
-    filter,
-    button
-) {
-
-    const gridMap = {
-
-        characters:
-            "characters-grid",
-
-        vehicles:
-            "vehicles-grid",
-
-        weapons:
-            "weapons-grid"
-
-    };
-
-
-    const grid =
-        document.getElementById(
-            gridMap[section]
-        );
-
-
-    if (!grid) return;
-
-
-    let category = "";
-
-
-    if (section === "characters") {
-
-        category = "Character";
-
-    }
-
-    if (section === "vehicles") {
-
-        category = "Vehicle";
-
-    }
-
-    if (section === "weapons") {
-
-        category = "Weapon";
-
-    }
-
-
-    let items =
-        gtaDatabase.filter(
-            item =>
-                item.category === category
-        );
-
-
-    if (filter !== "all") {
-
-        items =
-            items.filter(
-                item =>
-                    item.type === filter
-            );
-
-    }
-
-
-    grid.innerHTML = "";
-
-
-    items.forEach(item => {
-
-        grid.appendChild(
-            createCard(item)
-        );
-
-    });
-
-
-    const parent =
-        button.parentElement;
-
-
-    parent
-        .querySelectorAll(".filter-btn")
-        .forEach(btn => {
-
-            btn.classList.remove(
-                "active"
-            );
-
-        });
-
-
-    button.classList.add(
-        "active"
-    );
-}
-
-
-/* =========================
-   OPEN INDIVIDUAL DATABASE PAGE
-========================= */
-
-function openDetail(id) {
-
-    const item =
-        gtaDatabase.find(
-            entry =>
-                entry.id === id
-        );
-
-
-    if (!item) return;
-
-
-    document.getElementById(
-        "home"
-    ).style.display = "none";
-
-
-    const detailView =
-        document.getElementById(
-            "detailView"
-        );
-
-
-    const detailContent =
-        document.getElementById(
-            "detailContent"
-        );
-
-
-    let statsHTML = "";
-
-
-    Object.entries(item.details)
-        .forEach(
-            ([key, value]) => {
-
-                statsHTML += `
-
-                    <div class="detail-stat">
-
-                        <span>
-                            ${escapeHTML(key)}
-                        </span>
-
-                        <strong>
-                            ${escapeHTML(value)}
-                        </strong>
+                        ${escapeHTML(
+                            item.category
+                        )}
 
                     </div>
 
+                    <h3>
+
+                        ${escapeHTML(
+                            item.icon
+                        )}
+
+                        ${escapeHTML(
+                            item.title
+                        )}
+
+                    </h3>
+
+                    <p>
+
+                        ${escapeHTML(
+                            item.description
+                        )}
+
+                    </p>
+
                 `;
 
-            }
-        );
+
+                result.addEventListener(
+                    "click",
+                    function() {
+
+                        results.style.display =
+                            "none";
+
+                    }
+                );
 
 
-    detailContent.innerHTML = `
-
-        <div class="detail-icon">
-            ${item.icon}
-        </div>
-
-        <div class="detail-category">
-            ${escapeHTML(item.category)}
-        </div>
-
-        <h1>
-            ${escapeHTML(item.title)}
-        </h1>
-
-        <p class="detail-description">
-            ${escapeHTML(item.description)}
-        </p>
-
-        <div class="detail-grid">
-            ${statsHTML}
-        </div>
-
-    `;
-
-
-    detailView.style.display =
-        "block";
-
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-
-    history.pushState(
-        {
-            databasePage: id
-        },
-        "",
-        "#" + id
-    );
-}
-
-
-/* =========================
-   CLOSE DETAIL
-========================= */
-
-function closeDetail() {
-
-    document.getElementById(
-        "detailView"
-    ).style.display = "none";
-
-
-    document.getElementById(
-        "home"
-    ).style.display = "block";
-
-
-    history.pushState(
-        {},
-        "",
-        "#explore"
-    );
-
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
-
-
-/* =========================
-   SEARCH
-========================= */
-
-function searchSite() {
-
-    const input =
-        document.getElementById(
-            "searchInput"
-        );
-
-
-    const results =
-        document.getElementById(
-            "searchResults"
-        );
-
-
-    const query =
-        input.value
-        .trim()
-        .toLowerCase();
-
-
-    if (!query) {
-
-        results.style.display =
-            "none";
-
-        results.innerHTML =
-            "";
-
-        return;
-    }
-
-
-    const matches =
-        gtaDatabase.filter(
-            item => {
-
-                const searchableText =
-                    (
-                        item.title +
-                        " " +
-                        item.category +
-                        " " +
-                        item.description +
-                        " " +
-                        Object.keys(
-                            item.details
-                        ).join(" ") +
-                        " " +
-                        Object.values(
-                            item.details
-                        ).join(" ")
-                    ).toLowerCase();
-
-
-                return searchableText
-                    .includes(query);
+                results.appendChild(
+                    result
+                );
 
             }
         );
-
-
-    results.innerHTML = "";
-
-
-    if (matches.length === 0) {
-
-        results.innerHTML = `
-
-            <div class="no-results">
-
-                No GTA VI results found for
-                "<strong>
-                    ${escapeHTML(query)}
-                </strong>".
-
-            </div>
-
-        `;
 
 
         results.style.display =
             "block";
 
-        return;
     }
 
 
-    matches.forEach(
-        item => {
+    /* =========================================================
+       ENTER KEY SEARCH
+    ========================================================= */
 
-            const result =
-                document.createElement(
-                    "a"
-                );
+    document
+        .getElementById("searchInput")
+        .addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Enter"
+                ) {
+
+                    searchSite();
+
+                }
+
+            }
+        );
 
 
-            result.href =
-                "#" + item.id;
+    /* =========================================================
+       HTML SECURITY
+    ========================================================= */
+
+    function escapeHTML(text) {
+
+        return String(text)
+
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+
+            .replace(
+                /</g,
+                "&lt;"
+            )
+
+            .replace(
+                />/g,
+                "&gt;"
+            )
+
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+
+            .replace(
+                /'/g,
+                "&#039;"
+            );
+
+    }
 
 
-            result.className =
-                "search-result";
+    /* =========================================================
+       DETAIL PAGE RENDERER
+    ========================================================= */
+
+    function showDetailPage(key) {
+
+        const item =
+            gtaDatabase[key];
 
 
-            result.innerHTML = `
+        if (!item) {
 
-                <div class="search-result-label">
+            return false;
+
+        }
+
+
+        const homePage =
+            document.getElementById(
+                "homePage"
+            );
+
+        const detailPage =
+            document.getElementById(
+                "detailPage"
+            );
+
+        const detailContent =
+            document.getElementById(
+                "detailContent"
+            );
+
+
+        homePage.style.display =
+            "none";
+
+
+        detailPage.style.display =
+            "block";
+
+
+        detailContent.innerHTML = `
+
+            <div class="detail-hero">
+
+                <div class="detail-category">
 
                     ${escapeHTML(
                         item.category
@@ -2103,15 +2976,21 @@ function searchSite() {
 
                 </div>
 
-                <h3>
+
+                <h1 class="detail-title">
+
+                    ${escapeHTML(
+                        item.icon
+                    )}
 
                     ${escapeHTML(
                         item.title
                     )}
 
-                </h3>
+                </h1>
 
-                <p>
+
+                <p class="detail-description">
 
                     ${escapeHTML(
                         item.description
@@ -2119,212 +2998,273 @@ function searchSite() {
 
                 </p>
 
-            `;
+            </div>
 
 
-            result.addEventListener(
-                "click",
-                function(event) {
-
-                    event.preventDefault();
-
-                    openDetail(
-                        item.id
-                    );
-
-                }
-            );
+            <div class="detail-grid">
 
 
-            results.appendChild(
-                result
-            );
+                <div class="detail-box">
 
-        }
-    );
+                    <h2>
+                        Overview
+                    </h2>
 
+                    <p>
 
-    results.style.display =
-        "block";
-}
+                        ${escapeHTML(
+                            item.overview
+                        )}
 
-
-/* =========================
-   ENTER KEY SEARCH
-========================= */
-
-document
-    .getElementById(
-        "searchInput"
-    )
-    .addEventListener(
-        "keydown",
-        function(event) {
-
-            if (
-                event.key ===
-                "Enter"
-            ) {
-
-                searchSite();
-
-            }
-
-        }
-    );
+                    </p>
 
 
-/* =========================
-   DIRECT DATABASE URL
-========================= */
+                    <h2 style="margin-top:30px;">
 
-function checkHash() {
+                        Database Information
 
-    const hash =
-        window.location.hash
-        .replace("#", "");
+                    </h2>
 
 
-    if (!hash) return;
+                    <ul class="detail-list">
+
+                        ${item.facts
+                            .map(
+                                fact => `
+
+                                    <li>
+
+                                        ${escapeHTML(
+                                            fact
+                                        )}
+
+                                    </li>
+
+                                `
+                            )
+                            .join("")
+                        }
+
+                    </ul>
+
+                </div>
 
 
-    const item =
-        gtaDatabase.find(
-            entry =>
-                entry.id === hash
-        );
+                <div class="detail-box">
+
+                    <h2>
+                        Status
+                    </h2>
+
+                    <p>
+
+                        <span class="status">
+
+                            ${escapeHTML(
+                                item.status
+                            )}
+
+                        </span>
+
+                    </p>
 
 
-    if (item) {
+                    <ul class="detail-list">
 
-        openDetailWithoutHistory(
-            hash
-        );
+                        <li>
+
+                            <span class="info-label">
+                                Category
+                            </span>
+
+                            ${escapeHTML(
+                                item.category
+                            )}
+
+                        </li>
+
+
+                        <li>
+
+                            <span class="info-label">
+                                Source
+                            </span>
+
+                            Official / Verified information
+
+                        </li>
+
+
+                        <li>
+
+                            <span class="info-label">
+                                Updated
+                            </span>
+
+                            2026
+
+                        </li>
+
+                    </ul>
+
+
+                    <p style="margin-top:20px;">
+
+                        ${escapeHTML(
+                            item.note
+                        )}
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+
+        document.title =
+            item.title +
+            " | VICECITY HUB";
+
+
+        return true;
 
     }
 
-}
+
+    /* =========================================================
+       ROUTER
+    ========================================================= */
+
+    function handleRoute() {
+
+        let hash =
+            window.location.hash;
 
 
-function openDetailWithoutHistory(
-    id
-) {
+        if (!hash) {
 
-    const item =
-        gtaDatabase.find(
-            entry =>
-                entry.id === id
-        );
+            showHomePage();
+
+            return;
+
+        }
 
 
-    if (!item) return;
+        hash =
+            hash.substring(1);
 
 
-    document.getElementById(
-        "home"
-    ).style.display = "none";
+        if (
+            gtaDatabase[hash]
+        ) {
 
-
-    const detailView =
-        document.getElementById(
-            "detailView"
-        );
-
-
-    const detailContent =
-        document.getElementById(
-            "detailContent"
-        );
-
-
-    let statsHTML = "";
-
-
-    Object.entries(item.details)
-        .forEach(
-            ([key, value]) => {
-
-                statsHTML += `
-
-                    <div class="detail-stat">
-
-                        <span>
-                            ${escapeHTML(key)}
-                        </span>
-
-                        <strong>
-                            ${escapeHTML(value)}
-                        </strong>
-
-                    </div>
-
-                `;
-
-            }
-        );
-
-
-    detailContent.innerHTML = `
-
-        <div class="detail-icon">
-            ${item.icon}
-        </div>
-
-        <div class="detail-category">
-            ${escapeHTML(item.category)}
-        </div>
-
-        <h1>
-            ${escapeHTML(item.title)}
-        </h1>
-
-        <p class="detail-description">
-            ${escapeHTML(item.description)}
-        </p>
-
-        <div class="detail-grid">
-            ${statsHTML}
-        </div>
-
-    `;
-
-
-    detailView.style.display =
-        "block";
-}
-
-
-window.addEventListener(
-    "hashchange",
-    function() {
-
-        const hash =
-            window.location.hash
-            .replace("#", "");
-
-
-        const item =
-            gtaDatabase.find(
-                entry =>
-                    entry.id === hash
-            );
-
-
-        if (item) {
-
-            openDetailWithoutHistory(
+            showDetailPage(
                 hash
             );
 
+            return;
+
         }
 
+
+        showHomePage();
+
+
+        setTimeout(
+            function() {
+
+                const target =
+                    document.getElementById(
+                        hash
+                    );
+
+
+                if (target) {
+
+                    target.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+                }
+
+            },
+            50
+        );
+
     }
-);
 
 
-checkHash();
+    /* =========================================================
+       HOME PAGE
+    ========================================================= */
+
+    function showHomePage() {
+
+        const homePage =
+            document.getElementById(
+                "homePage"
+            );
+
+        const detailPage =
+            document.getElementById(
+                "detailPage"
+            );
+
+
+        homePage.style.display =
+            "block";
+
+
+        detailPage.style.display =
+            "none";
+
+
+        document.title =
+            "VICECITY HUB | GTA VI News, Guides & Database";
+
+    }
+
+
+    /* =========================================================
+       BACK BUTTON
+    ========================================================= */
+
+    function goBackToDatabase() {
+
+        window.location.hash =
+            "explore";
+
+    }
+
+
+    /* =========================================================
+       HASH ROUTE LISTENER
+    ========================================================= */
+
+    window.addEventListener(
+        "hashchange",
+        handleRoute
+    );
+
+
+    /* =========================================================
+       INITIAL LOAD
+    ========================================================= */
+
+    handleRoute();
+
 
 </script>
 
+
 </body>
+
 </html>
