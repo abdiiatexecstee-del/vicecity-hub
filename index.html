@@ -1,12 +1,13 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>VICECITY HUB | GTA VI Community & Information Hub</title>
+    <title>VICECITY HUB | GTA VI News, Guides & Community</title>
 
-    <meta name="description" content="VICECITY HUB is an unofficial GTA VI community and information hub covering news, vehicles, weapons, characters, missions, maps and guides.">
+    <meta name="description" content="VICECITY HUB is an unofficial GTA VI fan hub featuring news, guides, vehicles, characters, missions, locations and interactive tools.">
 
     <style>
         * {
@@ -21,8 +22,8 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: #08090b;
-            color: #ffffff;
+            background: #07080a;
+            color: #fff;
             line-height: 1.6;
         }
 
@@ -37,75 +38,94 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(8, 9, 11, 0.95);
-            border-bottom: 1px solid #24262b;
-            backdrop-filter: blur(12px);
+            background: rgba(7, 8, 10, 0.94);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid #25262c;
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1250px;
             margin: auto;
-            padding: 18px 25px;
+            padding: 16px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 22px;
+            font-size: 21px;
             font-weight: 900;
             letter-spacing: 2px;
         }
 
-        .logo span {
+        .logo span,
+        .pink {
             color: #ff4fa3;
         }
 
         .nav-links {
             display: flex;
             gap: 25px;
+            color: #a9abb3;
             font-size: 14px;
-            color: #b7bac2;
         }
 
         .nav-links a:hover {
-            color: #ffffff;
+            color: #fff;
         }
 
         /* HERO */
 
         .hero {
-            min-height: 620px;
+            min-height: 700px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 80px 20px;
+            padding: 90px 20px;
+            position: relative;
+            overflow: hidden;
+
             background:
-                radial-gradient(circle at 50% 30%, #35132d 0%, #120d14 35%, #08090b 70%);
+                radial-gradient(circle at 50% 15%, rgba(255,79,163,.28), transparent 30%),
+                radial-gradient(circle at 20% 80%, rgba(90,70,255,.16), transparent 30%),
+                linear-gradient(180deg, #180c18 0%, #09090d 55%, #07080a 100%);
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: linear-gradient(to bottom, black, transparent);
         }
 
         .hero-content {
-            max-width: 900px;
+            max-width: 950px;
+            position: relative;
+            z-index: 2;
         }
 
         .eyebrow {
             display: inline-block;
-            border: 1px solid #3a3d45;
-            padding: 7px 14px;
-            border-radius: 30px;
-            font-size: 12px;
-            color: #b7bac2;
-            margin-bottom: 25px;
-            text-transform: uppercase;
+            border: 1px solid #454650;
+            padding: 8px 15px;
+            border-radius: 999px;
+            color: #b8bac3;
+            font-size: 11px;
             letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
         }
 
         .hero h1 {
-            font-size: clamp(55px, 10vw, 120px);
-            line-height: 0.9;
-            letter-spacing: -5px;
-            margin-bottom: 25px;
+            font-size: clamp(55px, 11vw, 130px);
+            line-height: .85;
+            letter-spacing: -6px;
+            margin-bottom: 28px;
         }
 
         .hero h1 span {
@@ -113,105 +133,96 @@
         }
 
         .hero p {
-            color: #aeb1ba;
-            max-width: 650px;
+            max-width: 700px;
             margin: auto;
+            color: #aeb0b9;
             font-size: 18px;
         }
 
         .release {
-            margin-top: 35px;
-            font-size: 15px;
-            color: #b7bac2;
+            margin-top: 25px;
+            color: #9699a3;
+            font-size: 14px;
         }
 
         .release strong {
-            color: #ffffff;
+            color: #fff;
         }
 
-        .buttons {
-            margin-top: 35px;
+        .countdown {
             display: flex;
-            gap: 15px;
             justify-content: center;
+            gap: 12px;
+            margin: 30px auto;
             flex-wrap: wrap;
         }
 
+        .count-box {
+            min-width: 82px;
+            padding: 14px 10px;
+            background: rgba(255,255,255,.04);
+            border: 1px solid #303139;
+            border-radius: 10px;
+        }
+
+        .count-box strong {
+            display: block;
+            font-size: 24px;
+        }
+
+        .count-box span {
+            color: #858892;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
         .button {
-            padding: 14px 24px;
+            padding: 13px 23px;
             border-radius: 8px;
-            font-weight: bold;
+            border: 1px solid #35363d;
             font-size: 14px;
-            border: 1px solid #34363c;
-            transition: 0.2s;
+            font-weight: bold;
+            transition: .2s;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
         }
 
         .button-primary {
             background: #ff4fa3;
-            color: #08090b;
+            color: #09090b;
             border-color: #ff4fa3;
-        }
-
-        .button:hover {
-            transform: translateY(-2px);
         }
 
         /* GENERAL */
 
         section {
-            max-width: 1200px;
+            max-width: 1250px;
             margin: auto;
-            padding: 90px 25px;
+            padding: 85px 24px;
         }
 
         .section-header {
-            margin-bottom: 35px;
+            margin-bottom: 32px;
         }
 
         .section-header h2 {
             font-size: 36px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .section-header p {
-            color: #8f939d;
-        }
-
-        /* CARDS */
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-        }
-
-        .card {
-            background: #111317;
-            border: 1px solid #25282e;
-            border-radius: 12px;
-            padding: 25px;
-            min-height: 190px;
-            transition: 0.25s;
-        }
-
-        .card:hover {
-            border-color: #555861;
-            transform: translateY(-4px);
-        }
-
-        .card-icon {
-            font-size: 30px;
-            margin-bottom: 18px;
-        }
-
-        .card h3 {
-            font-size: 19px;
-            margin-bottom: 8px;
-        }
-
-        .card p {
-            color: #8f939d;
-            font-size: 14px;
+            color: #858892;
         }
 
         /* NEWS */
@@ -223,38 +234,140 @@
         }
 
         .news-card {
-            background: #111317;
-            border: 1px solid #25282e;
-            border-radius: 12px;
-            padding: 30px;
+            background: #101116;
+            border: 1px solid #25272e;
+            border-radius: 14px;
+            padding: 28px;
+            transition: .2s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-3px);
+            border-color: #44464f;
         }
 
         .news-label {
             color: #ff4fa3;
-            font-size: 11px;
-            text-transform: uppercase;
+            font-size: 10px;
             letter-spacing: 2px;
             font-weight: bold;
+            text-transform: uppercase;
             margin-bottom: 12px;
         }
 
         .news-card h3 {
-            font-size: 25px;
-            margin-bottom: 12px;
+            font-size: 24px;
+            margin-bottom: 10px;
         }
 
         .news-card p {
-            color: #8f939d;
+            color: #8d9099;
+            font-size: 14px;
         }
 
-        /* DISCLAIMER */
+        /* CARDS */
 
-        .disclaimer {
-            text-align: center;
-            padding: 40px 25px;
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 17px;
+        }
+
+        .card {
+            background: #101116;
+            border: 1px solid #25272e;
+            border-radius: 13px;
+            padding: 25px;
+            min-height: 190px;
+            transition: .2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: #ff4fa3;
+        }
+
+        .card-icon {
+            font-size: 29px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 18px;
+            margin-bottom: 7px;
+        }
+
+        .card p {
+            color: #858892;
+            font-size: 13px;
+        }
+
+        /* SEARCH */
+
+        .search-box {
+            margin-top: 25px;
+            display: flex;
+            max-width: 650px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 15px;
+            border-radius: 8px 0 0 8px;
+            border: 1px solid #30323a;
+            background: #111217;
+            color: #fff;
+            outline: none;
+        }
+
+        .search-box button {
+            padding: 15px 22px;
+            border: none;
+            border-radius: 0 8px 8px 0;
+            background: #ff4fa3;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* AD PLACEHOLDER */
+
+        .ad-space {
+            max-width: 1250px;
+            margin: auto;
+            padding: 20px 24px;
+        }
+
+        .ad-box {
+            min-height: 90px;
+            border: 1px dashed #30323a;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555862;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        /* ABOUT */
+
+        .about-box {
+            max-width: 800px;
+            color: #8d9099;
+        }
+
+        /* FOOTER */
+
+        footer {
             border-top: 1px solid #202228;
-            color: #70747e;
+            padding: 45px 24px;
+            text-align: center;
+            color: #686b75;
             font-size: 12px;
+        }
+
+        footer p + p {
+            margin-top: 8px;
         }
 
         /* MOBILE */
@@ -265,24 +378,25 @@
                 display: none;
             }
 
+            .hero {
+                min-height: 620px;
+            }
+
+            .hero h1 {
+                letter-spacing: -4px;
+            }
+
+            .news-grid,
             .cards {
                 grid-template-columns: 1fr;
             }
 
-            .news-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero {
-                min-height: 550px;
-            }
-
-            .hero h1 {
-                letter-spacing: -3px;
-            }
-
             section {
                 padding: 65px 20px;
+            }
+
+            .count-box {
+                min-width: 70px;
             }
         }
     </style>
@@ -290,262 +404,398 @@
 
 <body>
 
-    <!-- NAVIGATION -->
+<!-- NAVIGATION -->
 
-    <nav>
-        <div class="nav-container">
+<nav>
+    <div class="nav-container">
 
-            <a href="#" class="logo">
-                VICECITY<span>HUB</span>
-            </a>
+        <a href="#" class="logo">
+            VICECITY<span>HUB</span>
+        </a>
 
-            <div class="nav-links">
-                <a href="#news">News</a>
-                <a href="#explore">Explore</a>
-                <a href="#guides">Guides</a>
-                <a href="#about">About</a>
-            </div>
-
-        </div>
-    </nav>
-
-
-    <!-- HERO -->
-
-    <header class="hero">
-
-        <div class="hero-content">
-
-            <div class="eyebrow">
-                Unofficial GTA VI Community Hub
-            </div>
-
-            <h1>
-                VICECITY<span>HUB</span>
-            </h1>
-
-            <p>
-                Your upcoming home for GTA VI news, vehicles,
-                weapons, missions, characters, locations,
-                guides and interactive tools.
-            </p>
-
-            <div class="release">
-                GTA VI releases <strong>November 19, 2026</strong>
-            </div>
-
-            <div class="buttons">
-                <a href="#explore" class="button button-primary">
-                    Explore GTA VI
-                </a>
-
-                <a href="#news" class="button">
-                    Latest News
-                </a>
-            </div>
-
+        <div class="nav-links">
+            <a href="#news">News</a>
+            <a href="#explore">Explore</a>
+            <a href="#guides">Guides</a>
+            <a href="#about">About</a>
         </div>
 
-    </header>
+    </div>
+</nav>
 
 
-    <!-- NEWS -->
+<!-- HERO -->
 
-    <section id="news">
+<header class="hero">
 
-        <div class="section-header">
-            <h2>Latest GTA VI</h2>
-            <p>News and officially confirmed information.</p>
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            Unofficial GTA VI Community Hub
         </div>
 
-        <div class="news-grid">
-
-            <article class="news-card">
-
-                <div class="news-label">
-                    GTA VI
-                </div>
-
-                <h3>
-                    Everything We Know About Grand Theft Auto VI
-                </h3>
-
-                <p>
-                    VICECITY HUB will track officially confirmed
-                    information about GTA VI, including characters,
-                    locations, vehicles, gameplay systems and more.
-                </p>
-
-            </article>
-
-            <article class="news-card">
-
-                <div class="news-label">
-                    Launch
-                </div>
-
-                <h3>
-                    November 19, 2026
-                </h3>
-
-                <p>
-                    The current announced release date for GTA VI.
-                </p>
-
-            </article>
-
-        </div>
-
-    </section>
-
-
-    <!-- EXPLORE -->
-
-    <section id="explore">
-
-        <div class="section-header">
-            <h2>Explore GTA VI</h2>
-            <p>Our database will grow as more official information becomes available.</p>
-        </div>
-
-        <div class="cards">
-
-            <a href="#" class="card">
-                <div class="card-icon">🗺️</div>
-                <h3>Interactive Map</h3>
-                <p>
-                    Explore Vice City and Leonida with locations,
-                    collectibles, missions and more.
-                </p>
-            </a>
-
-            <a href="#" class="card">
-                <div class="card-icon">🚗</div>
-                <h3>Vehicles</h3>
-                <p>
-                    Browse GTA VI vehicles and compare their
-                    performance and specifications.
-                </p>
-            </a>
-
-            <a href="#" class="card">
-                <div class="card-icon">🔫</div>
-                <h3>Weapons</h3>
-                <p>
-                    Discover weapons, categories, locations
-                    and gameplay information.
-                </p>
-            </a>
-
-            <a href="#" class="card">
-                <div class="card-icon">👤</div>
-                <h3>Characters</h3>
-                <p>
-                    Explore the characters and personalities
-                    of GTA VI.
-                </p>
-            </a>
-
-            <a href="#" class="card">
-                <div class="card-icon">🎯</div>
-                <h3>Missions</h3>
-                <p>
-                    Mission information, objectives,
-                    rewards and walkthroughs.
-                </p>
-            </a>
-
-            <a href="#" class="card">
-                <div class="card-icon">📍</div>
-                <h3>Locations</h3>
-                <p>
-                    Discover important locations throughout
-                    the world of GTA VI.
-                </p>
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- GUIDES -->
-
-    <section id="guides">
-
-        <div class="section-header">
-            <h2>GTA VI Guides</h2>
-            <p>Practical guides for players.</p>
-        </div>
-
-        <div class="cards">
-
-            <div class="card">
-                <div class="card-icon">💰</div>
-                <h3>Money Guides</h3>
-                <p>
-                    Strategies and tips for making money in GTA VI.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">🏆</div>
-                <h3>100% Completion</h3>
-                <p>
-                    Track missions, collectibles and activities.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">⚡</div>
-                <h3>Tips & Tricks</h3>
-                <p>
-                    Helpful gameplay information and discoveries.
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ABOUT -->
-
-    <section id="about">
-
-        <div class="section-header">
-            <h2>About VICECITY HUB</h2>
-        </div>
-
-        <p style="color:#8f939d; max-width:750px;">
-            VICECITY HUB is an independent fan-made GTA VI
-            information and community platform. Our goal is to
-            organize publicly available, officially confirmed
-            information into a useful database for players.
-        </p>
-
-    </section>
-
-
-    <!-- FOOTER -->
-
-    <footer class="disclaimer">
+        <h1>
+            VICECITY<span>HUB</span>
+        </h1>
 
         <p>
-            VICECITY HUB is an unofficial fan website and is not
-            affiliated with or endorsed by Rockstar Games.
+            Your independent destination for GTA VI news,
+            guides, vehicles, characters, missions, locations
+            and community-driven tools.
         </p>
 
-        <p style="margin-top:8px;">
-            Grand Theft Auto and Rockstar Games are trademarks
-            of their respective owners.
+        <div class="release">
+            GTA VI releases <strong>November 19, 2026</strong>
+        </div>
+
+        <div class="countdown">
+
+            <div class="count-box">
+                <strong id="days">0</strong>
+                <span>Days</span>
+            </div>
+
+            <div class="count-box">
+                <strong id="hours">0</strong>
+                <span>Hours</span>
+            </div>
+
+            <div class="count-box">
+                <strong id="minutes">0</strong>
+                <span>Minutes</span>
+            </div>
+
+            <div class="count-box">
+                <strong id="seconds">0</strong>
+                <span>Seconds</span>
+            </div>
+
+        </div>
+
+        <div class="buttons">
+
+            <a href="#explore" class="button button-primary">
+                Explore GTA VI
+            </a>
+
+            <a href="#news" class="button">
+                Latest News
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- AD SPACE -->
+
+<div class="ad-space">
+    <div class="ad-box">
+        ADVERTISEMENT
+    </div>
+</div>
+
+
+<!-- NEWS -->
+
+<section id="news">
+
+    <div class="section-header">
+        <h2>Latest GTA VI</h2>
+        <p>News and officially confirmed information.</p>
+    </div>
+
+    <div class="news-grid">
+
+        <article class="news-card">
+
+            <div class="news-label">
+                Featured
+            </div>
+
+            <h3>
+                Everything We Know About Grand Theft Auto VI
+            </h3>
+
+            <p>
+                VICECITY HUB will organize confirmed information
+                about characters, locations, vehicles, gameplay,
+                missions and more as the game approaches launch.
+            </p>
+
+        </article>
+
+        <article class="news-card">
+
+            <div class="news-label">
+                Launch
+            </div>
+
+            <h3>
+                November 19, 2026
+            </h3>
+
+            <p>
+                The currently announced release date for GTA VI.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- EXPLORE -->
+
+<section id="explore">
+
+    <div class="section-header">
+
+        <h2>Explore GTA VI</h2>
+
+        <p>
+            Build your ultimate GTA VI database.
         </p>
 
-        <p style="margin-top:15px;">
-            © 2026 VICECITY HUB
+        <div class="search-box">
+
+            <input
+                id="searchInput"
+                type="text"
+                placeholder="Search vehicles, characters, missions..."
+            >
+
+            <button onclick="searchSite()">
+                Search
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="cards">
+
+        <a href="#" class="card">
+            <div class="card-icon">🗺️</div>
+            <h3>Interactive Map</h3>
+            <p>
+                Explore Vice City and Leonida with locations,
+                collectibles, missions and more.
+            </p>
+        </a>
+
+        <a href="#" class="card">
+            <div class="card-icon">🚗</div>
+            <h3>Vehicles</h3>
+            <p>
+                Browse GTA VI vehicles and compare
+                performance and specifications.
+            </p>
+        </a>
+
+        <a href="#" class="card">
+            <div class="card-icon">🔫</div>
+            <h3>Weapons</h3>
+            <p>
+                Discover weapons, categories and
+                gameplay information.
+            </p>
+        </a>
+
+        <a href="#" class="card">
+            <div class="card-icon">👤</div>
+            <h3>Characters</h3>
+            <p>
+                Explore characters and personalities
+                from GTA VI.
+            </p>
+        </a>
+
+        <a href="#" class="card">
+            <div class="card-icon">🎯</div>
+            <h3>Missions</h3>
+            <p>
+                Mission information, objectives,
+                rewards and walkthroughs.
+            </p>
+        </a>
+
+        <a href="#" class="card">
+            <div class="card-icon">📍</div>
+            <h3>Locations</h3>
+            <p>
+                Discover important locations throughout
+                Leonida.
+            </p>
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- GUIDES -->
+
+<section id="guides">
+
+    <div class="section-header">
+
+        <h2>GTA VI Guides</h2>
+
+        <p>
+            Practical guides designed for players.
         </p>
 
-    </footer>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-icon">💰</div>
+            <h3>Money Guides</h3>
+            <p>
+                Strategies and tips for making money
+                in GTA VI.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🏆</div>
+            <h3>100% Completion</h3>
+            <p>
+                Track missions, collectibles and
+                activities.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">⚡</div>
+            <h3>Tips & Tricks</h3>
+            <p>
+                Helpful gameplay information and
+                discoveries.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <div class="section-header">
+        <h2>About VICECITY HUB</h2>
+    </div>
+
+    <div class="about-box">
+
+        <p>
+            VICECITY HUB is an independent fan-made GTA VI
+            information and community platform. Our goal is to
+            organize publicly available information into a useful
+            destination for players.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        VICECITY HUB is an unofficial fan website and is not
+        affiliated with or endorsed by Rockstar Games.
+    </p>
+
+    <p>
+        Grand Theft Auto and Rockstar Games are trademarks
+        of their respective owners.
+    </p>
+
+    <p>
+        © 2026 VICECITY HUB
+    </p>
+
+</footer>
+
+
+<script>
+
+    /* COUNTDOWN */
+
+    const launchDate = new Date("November 19, 2026 00:00:00").getTime();
+
+    function updateCountdown() {
+
+        const now = new Date().getTime();
+        const distance = launchDate - now;
+
+        if (distance <= 0) {
+
+            document.getElementById("days").textContent = "0";
+            document.getElementById("hours").textContent = "0";
+            document.getElementById("minutes").textContent = "0";
+            document.getElementById("seconds").textContent = "0";
+
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) /
+            (1000 * 60 * 60)
+        );
+
+        const minutes = Math.floor(
+            (distance % (1000 * 60 * 60)) /
+            (1000 * 60)
+        );
+
+        const seconds = Math.floor(
+            (distance % (1000 * 60)) / 1000
+        );
+
+        document.getElementById("days").textContent = days;
+        document.getElementById("hours").textContent = hours;
+        document.getElementById("minutes").textContent = minutes;
+        document.getElementById("seconds").textContent = seconds;
+    }
+
+    updateCountdown();
+
+    setInterval(updateCountdown, 1000);
+
+
+    /* SEARCH */
+
+    function searchSite() {
+
+        const query =
+            document.getElementById("searchInput").value.trim();
+
+        if (!query) {
+            alert("Enter something to search.");
+            return;
+        }
+
+        alert(
+            "VICECITY HUB search is coming soon. Searching for: " +
+            query
+        );
+    }
+
+</script>
 
 </body>
 </html>
+```
